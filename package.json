@@ -3,9 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "csvtojson": "^2.0.8",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "react-table": "^6.9.2"
   },
   "scripts": {
     "start": "react-scripts start",
