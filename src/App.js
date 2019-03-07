@@ -9,11 +9,13 @@ const App = () => {
   const [ratings, setRatings] = useState();
 
   useEffect(() => {
-    const sessionData = sessionStorage.getItem('ratings');
+    if (!loaded) {
+      const sessionData = sessionStorage.getItem('ratings');
 
-    if (sessionData) {
-      setRatings(JSON.parse(sessionData));
-      setLoaded(true);
+      if (sessionData) {
+        setRatings(JSON.parse(sessionData));
+        setLoaded(true);
+      }
     }
   });
 

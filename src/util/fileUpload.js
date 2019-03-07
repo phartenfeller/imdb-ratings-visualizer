@@ -40,7 +40,7 @@ function csvToJson(rawCsv) {
 
   const lines = csv.split('\n');
   console.log(lines[0]);
-  const result = [];
+  let result = [];
   const headers = lines[0].split(separator);
 
   lines.map((line, indexLine) => {
@@ -59,6 +59,8 @@ function csvToJson(rawCsv) {
   });
 
   result.pop(); // remove the last item because undefined values
+
+  result = convertDatatypes(result);
 
   console.log(result);
   return result;
@@ -99,7 +101,7 @@ function changeHeaders(csv) {
   cleanedCsv = csv.replace('Const,', 'id,');
   cleanedCsv = cleanedCsv.replace('Your Rating,', 'rating,');
   cleanedCsv = cleanedCsv.replace('Title,', 'title,');
-  cleanedCsv = cleanedCsv.replace('Date Rated,', 'dateRated,');
+  cleanedCsv = cleanedCsv.replace('Date Rated,', 'dateRatedString,');
   cleanedCsv = cleanedCsv.replace('Genres,', 'genres,');
   cleanedCsv = cleanedCsv.replace('Title Type,', 'titleType,');
   cleanedCsv = cleanedCsv.replace('Directors,', 'directors,');
@@ -109,8 +111,27 @@ function changeHeaders(csv) {
   cleanedCsv = cleanedCsv.replace('URL,', 'url,');
   cleanedCsv = cleanedCsv.replace('Year,', 'year,');
   cleanedCsv = cleanedCsv.replace('Directors,', 'directors,');
-  cleanedCsv = cleanedCsv.replace('IMDB Rating,', 'imdbRating,');
+  cleanedCsv = cleanedCsv.replace('IMDb Rating,', 'imdbRating,');
   return cleanedCsv;
+}
+
+/**
+ * Covert Strings to corresponding datatypes
+ * @param {Array} data
+ * @return {Array}
+ */
+function convertDatatypes(data) {
+  data.map(review => {
+    review.rating = parseInt(review.rating);
+    review.runtime = parseInt(review.runtime);
+    review.votes = parseInt(review.votes);
+    review.year = parseInt(review.year);
+    review.imdbRating = parseFloat(review.imdbRating);
+    review.dateRated = new Date(review.dateRatedString);
+    return review;
+  });
+
+  return data;
 }
 
 export { uploadFile };

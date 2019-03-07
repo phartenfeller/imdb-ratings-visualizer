@@ -23,11 +23,18 @@ const RatingsTable = ({ ratings }) => {
     },
     {
       Header: 'Date Rated',
-      accessor: 'dateRated',
+      accessor: 'dateRatedString',
     },
     {
       Header: 'Genres',
       accessor: 'genres',
+    },
+  ];
+
+  const defaultSorted = [
+    {
+      id: 'rating',
+      desc: true,
     },
   ];
 
@@ -37,6 +44,7 @@ const RatingsTable = ({ ratings }) => {
       // resolveData={data => data.map(row => row)}
       columns={columns}
       className="-striped -highlight"
+      defaultSorted={defaultSorted}
     />
   );
 };
