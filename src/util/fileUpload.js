@@ -8,8 +8,6 @@ const separator = '***';
 async function uploadFile(file) {
   const csv = await readFile(file);
   return csvToJson(csv);
-  // sessionStorage.setItem('ratings', JSON.stringify(json));
-  // setLoaded(true);
 }
 
 /**

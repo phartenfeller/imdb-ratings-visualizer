@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { uploadFile } from '../util/fileUpload';
+import './Uploader.scss';
 
 const Uploader = ({ setLoaded, setRatings }) => {
   const upload = async () => {
@@ -8,10 +9,11 @@ const Uploader = ({ setLoaded, setRatings }) => {
     const json = await uploadFile(file);
     setRatings(json);
     setLoaded(true);
+    sessionStorage.setItem('ratings', JSON.stringify(json));
   };
 
   return (
-    <div>
+    <div className="uploader">
       <h1>Upload IMDb Ratings CSV</h1>
       <input type="file" id="fileUpload" onChange={upload} />
     </div>
