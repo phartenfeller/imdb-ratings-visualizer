@@ -26,7 +26,7 @@ function readFile(file) {
     fileReader.onerror = err => {
       reject(err);
     };
-    fileReader.readAsText(file);
+    fileReader.readAsText(file, 'Windows-1252');
   });
 }
 
@@ -50,7 +50,7 @@ function csvToJson(rawCsv) {
     const obj = {};
     const currentline = line.split(',');
 
-    headers.map(function(header, indexHeader) {
+    headers.map((header, indexHeader) => {
       obj[header] = currentline[indexHeader];
       return obj;
     });

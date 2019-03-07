@@ -1,8 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-const RatingsTable = () => {
-  const ratings = JSON.parse(sessionStorage.getItem('ratings'));
-
+const RatingsTable = ({ ratings }) => {
   return (
     <ul>
       {ratings.map(rating => {
@@ -14,6 +13,10 @@ const RatingsTable = () => {
       })}
     </ul>
   );
+};
+
+RatingsTable.propTypes = {
+  ratings: PropTypes.array,
 };
 
 export default RatingsTable;
