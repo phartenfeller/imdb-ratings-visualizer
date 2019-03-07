@@ -1,14 +1,25 @@
-import React from 'react';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import './App.scss';
 import RatingsTable from './components/RatingsTable';
 import Uploader from './components/Uploader';
+import TitleBar from './components/TitleBar';
 
 const App = () => {
-  const [loaded, setLoaded] = React.useState(false);
-  const [ratings, setRatings] = React.useState();
+  const [loaded, setLoaded] = useState(false);
+  const [ratings, setRatings] = useState();
+
+  useEffect(() => {
+    const sessionData = sessionStorage.getItem('ratings');
+
+    if (sessionData) {
+      setRatings(JSON.parse(sessionData));
+      setLoaded(true);
+    }
+  });
 
   return (
     <div className="App">
+      <TitleBar />
       {loaded ? (
         <RatingsTable ratings={ratings} />
       ) : (
