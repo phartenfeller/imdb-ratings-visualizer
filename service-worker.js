@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/imdb-visualizer/precache-manifest.81e2e310237efd0945d41951825b488b.js"
+  "/imdb-ratings-visualizer/precache-manifest.9b40ed09f16501e0c5743294f2e9eb0e.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/imdb-visualizer/index.html", {
+workbox.routing.registerNavigationRoute("/imdb-ratings-visualizer/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
