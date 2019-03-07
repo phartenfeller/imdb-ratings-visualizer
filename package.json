@@ -42,5 +42,5 @@
     "husky": "^1.3.1",
     "prettier": "^1.16.4"
   },
-  "homepage": "https://phartenfeller.github.io/imdb-visualizer"
+  "homepage": "https://phartenfeller.github.io/imdb-ratings-visualizer"
 }
