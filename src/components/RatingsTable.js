@@ -38,6 +38,12 @@ const RatingsTable = ({ ratings }) => {
     },
   ];
 
+  const nextText = (
+    <span>
+      Next <i className="material-icons">keyboard_arrow_right</i>
+    </span>
+  );
+
   return (
     <ReactTable
       data={ratings}
@@ -45,6 +51,8 @@ const RatingsTable = ({ ratings }) => {
       columns={columns}
       className="-striped -highlight"
       defaultSorted={defaultSorted}
+      pageSize={50}
+      nextText={nextText}
     />
   );
 };
