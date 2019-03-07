@@ -73,11 +73,7 @@ function csvToJson(rawCsv) {
  */
 function cleanData(csv) {
   let cleanedCsv;
-  // change headers
-  cleanedCsv = csv.replace('Const,', 'id,');
-  cleanedCsv = cleanedCsv.replace('Your Rating,', 'rating,');
-  cleanedCsv = cleanedCsv.replace('Title,', 'title,');
-
+  cleanedCsv = changeHeaders(csv);
   // change all commas in titles to ###
   cleanedCsv = cleanedCsv.replace(/"[^"]+"/g, v => {
     return v.replace(/,/g, '###');
@@ -92,6 +88,30 @@ function cleanData(csv) {
   // remove quotes in titles
   cleanedCsv = cleanedCsv.replace(/"/g, '');
 
+  return cleanedCsv;
+}
+
+/**
+ * Change Headers of CSV
+ * @param {String} csv
+ * @return {String}
+ */
+function changeHeaders(csv) {
+  let cleanedCsv;
+  cleanedCsv = csv.replace('Const,', 'id,');
+  cleanedCsv = cleanedCsv.replace('Your Rating,', 'rating,');
+  cleanedCsv = cleanedCsv.replace('Title,', 'title,');
+  cleanedCsv = cleanedCsv.replace('Date Rated,', 'dateRated,');
+  cleanedCsv = cleanedCsv.replace('Genres,', 'genres,');
+  cleanedCsv = cleanedCsv.replace('Title Type,', 'titleType,');
+  cleanedCsv = cleanedCsv.replace('Directors,', 'directors,');
+  cleanedCsv = cleanedCsv.replace('Num Votes,', 'votes,');
+  cleanedCsv = cleanedCsv.replace('Runtime (mins),', 'runtime,');
+  cleanedCsv = cleanedCsv.replace('Release Date,', 'releaseDate,');
+  cleanedCsv = cleanedCsv.replace('URL,', 'url,');
+  cleanedCsv = cleanedCsv.replace('Year,', 'year,');
+  cleanedCsv = cleanedCsv.replace('Directors,', 'directors,');
+  cleanedCsv = cleanedCsv.replace('IMDB Rating,', 'imdbRating,');
   return cleanedCsv;
 }
 
