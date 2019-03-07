@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import RatingsTable from './RatingsTable';
-import Uploader from './Uploader';
+import RatingsTable from './components/RatingsTable';
+import Uploader from './components/Uploader';
 
 const App = () => {
   const [loaded, setLoaded] = React.useState(false);

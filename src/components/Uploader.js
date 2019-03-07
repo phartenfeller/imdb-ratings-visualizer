@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { uploadFile } from './util/fileUpload';
+import { uploadFile } from '../util/fileUpload';
 
 const Uploader = ({ setLoaded, setRatings }) => {
   const upload = async () => {
