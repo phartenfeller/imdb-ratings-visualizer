@@ -4,7 +4,7 @@ import './TitleBar.scss';
 const TitleBar = () => {
   return (
     <div className="title-bar">
-      <span className="app-name">IMDb Reviews Visualizer</span>
+      <span className="app-name">IMDb Ratings Visualizer</span>
     </div>
   );
 };
