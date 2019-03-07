@@ -40,7 +40,17 @@ const RatingsTable = ({ ratings }) => {
 
   const nextText = (
     <span>
-      Next <i className="material-icons">keyboard_arrow_right</i>
+      <span style={{ verticalAlign: 'middle' }}>Next</span>
+      <i className="material-icons pagination-icon">keyboard_arrow_right</i>
+    </span>
+  );
+
+  const previousText = (
+    <span>
+      <i className="material-icons pagination-icon left-pagination-icon">
+        keyboard_arrow_left
+      </i>
+      <span>Previous</span>
     </span>
   );
 
@@ -51,8 +61,11 @@ const RatingsTable = ({ ratings }) => {
       columns={columns}
       className="-striped -highlight"
       defaultSorted={defaultSorted}
-      pageSize={50}
+      defaultPageSize={50}
+      pageSizeOptions={[5, 10, 20, 25, 50, 100, 250, 1000]}
       nextText={nextText}
+      previousText={previousText}
+      minRows={0}
     />
   );
 };

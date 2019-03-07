@@ -1,4 +1,9 @@
 @import "../styles/colors.scss";
+.pagination-icon {
+  color: $icon-text-color;
+  vertical-align: middle;
+  padding-bottom: 2px;
+}
 
 .ReactTable {
   position: relative;
