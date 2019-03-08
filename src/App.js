@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import './App.scss';
-import RatingsTable from './components/RatingsTable';
 import Uploader from './components/Uploader';
 import TitleBar from './components/TitleBar';
+import Sidebar from './components/Sidebar';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import routes from './util/routes';
 
 const App = () => {
   const [loaded, setLoaded] = useState(false);
@@ -22,13 +25,43 @@ const App = () => {
   return (
     <div className="App">
       <TitleBar />
-      {loaded ? (
-        <RatingsTable ratings={ratings} />
-      ) : (
-        <Uploader setLoaded={setLoaded} setRatings={setRatings} />
-      )}
+      <div className="main-content">
+        {loaded ? (
+          <Router>
+            <LoadedApp ratings={ratings} />
+          </Router>
+        ) : (
+          <Uploader setLoaded={setLoaded} setRatings={setRatings} />
+        )}
+      </div>
     </div>
   );
+};
+
+const LoadedApp = ({ ratings }) => {
+  const routeComponents = routes.map(({ path, component: Component, name }) => {
+    return (
+      <Route
+        exact
+        path={path}
+        render={() => <Component ratings={ratings} />}
+        key={name}
+        ratings={ratings}
+      />
+    );
+  });
+
+  return (
+    <div>
+      <Sidebar />
+      {routeComponents}
+      {/* <RatingsTable ratings={ratings} /> */}
+    </div>
+  );
+};
+
+LoadedApp.propTypes = {
+  ratings: PropTypes.array,
 };
 
 export default App;

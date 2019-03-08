@@ -59,7 +59,7 @@ const RatingsTable = ({ ratings }) => {
       data={ratings}
       // resolveData={data => data.map(row => row)}
       columns={columns}
-      className="-striped -highlight"
+      className="-striped -highlight main-component"
       defaultSorted={defaultSorted}
       defaultPageSize={50}
       pageSizeOptions={[5, 10, 20, 25, 50, 100, 250, 1000]}

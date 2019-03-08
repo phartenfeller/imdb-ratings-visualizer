@@ -1,16 +1,19 @@
 @import "../styles/colors.scss";
-
+@import "../styles/metrics.scss";
 .title-bar {
-  height: 60px;
+  height: $title-bar-height;
   background-color: $title-color;
   box-shadow: 0 2px 10px 0px hsla(53, 22%, 36%, 0.08);
+  position: fixed;
+  top: 0;
+  width: 100%;
 }
 
 .app-name {
   color: $cream-yellow;
   display: flex;
   justify-content: center;
-  line-height: 60px;
+  line-height: $title-bar-height;
   font-size: 24px;
   font-weight: bold;
 }
