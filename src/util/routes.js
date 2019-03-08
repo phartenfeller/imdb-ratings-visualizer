@@ -4,13 +4,13 @@ import Dashboard from '../components/Dashboard';
 const routes = [
   {
     name: 'Dashboard',
-    icon: 'test',
+    icon: 'bubble_chart',
     path: '/',
     component: Dashboard,
   },
   {
     name: 'Ratings',
-    icon: 'table',
+    icon: 'list',
     path: '/ratings',
     component: RatingsTable,
   },

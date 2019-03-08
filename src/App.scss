@@ -11,5 +11,6 @@ body {
 }
 
 .main-component {
-  margin-top: $title-bar-height;
+  margin-top: $titlebar-height;
+  margin-left: $sidebar-width;
 }

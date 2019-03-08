@@ -1,5 +1,7 @@
+@import '../styles/metrics.scss';
+@import '../styles/colors.scss';
 .sidebar {
-  width: 200px;
+  width: $sidebar-width;
   float: left;
   position: fixed;
   left: 0;
@@ -8,6 +10,38 @@
   height: 100%;
 }
 
-.main-component {
-  margin-left: 200px;
+.sidebar-link {
+  text-decoration: none;
+}
+
+.sidebar-box {
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-top: 10px;
+}
+
+.sidebar-text {
+  font-weight: bold;
+  color: $text-gray-dark;
+  vertical-align: middle;
+  padding-left: 4px;
+}
+
+.sidebar-icon {
+  vertical-align: middle;
+  color: $icon-text-color-dark;
+  padding-bottom: 3px;
+}
+
+.sidebar-link:hover .sidebar-box {
+  border-radius: 8px;
+  background-color: $bg-color-dark;
+}
+
+.sidebar-link:hover .sidebar-text {
+  color: $text-gray;
+}
+
+.active-tab {
+  box-shadow: inset 2px 0 0 0 $cream-yellow;
 }
