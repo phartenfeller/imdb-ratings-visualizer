@@ -3,6 +3,18 @@ import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 import routes from '../util/routes';
 
+/**
+ * returns active route name
+ * @return {String}
+ */
+function getActiveRoute() {
+  const currentRoute = routes.find(route => {
+    return route.path === window.location.pathname;
+  });
+
+  return currentRoute.name;
+}
+
 const Sidebar = () => {
   return (
     <div className="sidebar">
@@ -12,7 +24,7 @@ const Sidebar = () => {
 };
 
 const SidebarElements = () => {
-  const [active, setActive] = useState(routes[0].name);
+  const [active, setActive] = useState(getActiveRoute());
 
   const isActive = name => {
     console.log('isActive =>', name);
