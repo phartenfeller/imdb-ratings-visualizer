@@ -6,7 +6,7 @@
   position: fixed;
   left: 0;
   overflow-x: hidden;
-  background-color: black;
+  background-color: $sidebar-color;
   height: 100%;
 }
 
@@ -44,4 +44,8 @@
 
 .active-tab {
   box-shadow: inset 2px 0 0 0 $cream-yellow;
+}
+
+.active-tab .sidebar-text {
+  color: $text-gray;
 }
