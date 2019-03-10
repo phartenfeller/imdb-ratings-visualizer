@@ -1,3 +1,5 @@
+import mediaTypes from '../constants/mediaTypes';
+
 const separator = '***';
 
 /**
@@ -103,7 +105,7 @@ function changeHeaders(csv) {
   cleanedCsv = cleanedCsv.replace('Title,', 'title,');
   cleanedCsv = cleanedCsv.replace('Date Rated,', 'dateRatedString,');
   cleanedCsv = cleanedCsv.replace('Genres,', 'genres,');
-  cleanedCsv = cleanedCsv.replace('Title Type,', 'titleType,');
+  cleanedCsv = cleanedCsv.replace('Title Type,', 'mediaType,');
   cleanedCsv = cleanedCsv.replace('Directors,', 'directors,');
   cleanedCsv = cleanedCsv.replace('Num Votes,', 'votes,');
   cleanedCsv = cleanedCsv.replace('Runtime (mins),', 'runtime,');
@@ -122,12 +124,20 @@ function changeHeaders(csv) {
  */
 function convertDatatypes(data) {
   data.map(review => {
+    const mediaTypeId = mediaTypes.findIndex(
+      mediaType => mediaType.exportName === review.mediaType
+    );
+
+    console.log(review.mediaType, ' => ', mediaTypeId);
+
     review.rating = parseInt(review.rating);
     review.runtime = parseInt(review.runtime);
     review.votes = parseInt(review.votes);
     review.year = parseInt(review.year);
     review.imdbRating = parseFloat(review.imdbRating);
     review.dateRated = new Date(review.dateRatedString);
+    review.mediaTypeId = mediaTypeId;
+    review.mediaType = mediaTypes[mediaTypeId].name;
     return review;
   });
 

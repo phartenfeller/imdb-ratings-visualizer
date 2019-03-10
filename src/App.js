@@ -16,6 +16,7 @@ const App = () => {
       const sessionData = sessionStorage.getItem('ratings');
 
       if (sessionData) {
+        console.log(JSON.parse(sessionData));
         setRatings(JSON.parse(sessionData));
         setLoaded(true);
       }

@@ -1,20 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactApexCharts from 'react-apexcharts';
+import AverageRatings from './charts/AverageRatings';
 import './Dashboard.scss';
-
-const colors = [
-  '#FF355E',
-  '#FD5B78',
-  '#FF6037',
-  '#FF9933',
-  '#FFCC33',
-  '#FFFF66',
-  '#CCFF00',
-  '#66FF66',
-  '#50BFE6',
-  '#FF00CC',
-];
 
 const countOccurences = ratings => {
   const ratingsArray = ratings.map(rating => rating.rating);
@@ -63,96 +50,6 @@ const Dashboard = ({ ratings }) => {
 
 Dashboard.propTypes = {
   ratings: PropTypes.array,
-};
-
-const AverageRatings = ({ ratingsData, ratingsCount }) => {
-  const options = {
-    colors,
-    plotOptions: {
-      bar: {
-        dataLabels: {
-          position: 'top',
-        },
-        distributed: true,
-      },
-    },
-    dataLabels: {
-      enabled: true,
-      formatter: val => {
-        return Math.round((val / ratingsCount) * 100) + '%';
-      },
-      offsetY: -20,
-      style: {
-        fontSize: '12px',
-        colors: ['#ffffff'],
-      },
-    },
-    xaxis: {
-      categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'],
-      labels: {
-        style: {
-          colors,
-        },
-      },
-      tooltip: {
-        enabled: true,
-      },
-    },
-    // fill: {
-    //   type: 'solid',
-    //   colors,
-    //   gradient: {
-    //     shade: 'light',
-    //     type: 'horizontal',
-    //     shadeIntensity: 0.25,
-    //     gradientToColors: undefined,
-    //     inverseColors: true,
-    //     opacityFrom: 1,
-    //     opacityTo: 1,
-    //     stops: [50, 0, 100, 100],
-    //   },
-    // },
-    yaxis: {
-      axisBorder: {
-        show: false,
-      },
-      axisTicks: {
-        show: false,
-      },
-    },
-    title: {
-      text: 'Ratings per Stars',
-      floating: true,
-      align: 'center',
-      style: {
-        color: '#ffffff',
-      },
-    },
-  };
-
-  const series = [
-    {
-      name: 'Ratings',
-      data: ratingsData,
-    },
-  ];
-
-  return (
-    <div className="chart-container">
-      <ReactApexCharts
-        options={options}
-        series={series}
-        type="bar"
-        height="350"
-        width="600"
-      />
-    </div>
-  );
-};
-
-AverageRatings.propTypes = {
-  ratingsData: PropTypes.array,
-  ratingsCount: PropTypes.number,
 };
 
 export default Dashboard;

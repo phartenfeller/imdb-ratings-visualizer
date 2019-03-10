@@ -19,7 +19,7 @@ const RatingsTable = ({ ratings }) => {
     },
     {
       Header: 'Type',
-      accessor: 'titleType',
+      accessor: 'mediaType',
     },
     {
       Header: 'Date Rated',
