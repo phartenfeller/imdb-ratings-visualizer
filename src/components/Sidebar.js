@@ -17,7 +17,7 @@ function getActiveRoute() {
   return currentRoute.name;
 }
 
-const Sidebar = ({ loadedMediaTypes }) => {
+const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
   const precheckBoxes = loadedMediaTypes.map(typeId => {
     return [typeId, true];
   });
@@ -29,6 +29,7 @@ const Sidebar = ({ loadedMediaTypes }) => {
     const isChecked = event.target.checked;
     setCheckedItems(checkedItems.set(id, isChecked));
     setForceUpdate(forceUpdate + 1);
+    filterMovies(checkedItems);
   };
 
   return (
@@ -56,6 +57,7 @@ const Sidebar = ({ loadedMediaTypes }) => {
 
 Sidebar.propTypes = {
   loadedMediaTypes: PropTypes.array,
+  filterMovies: PropTypes.func,
 };
 
 const SidebarElements = () => {

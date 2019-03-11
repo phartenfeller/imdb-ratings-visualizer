@@ -35,13 +35,15 @@ const countOccurences = ratings => {
 };
 
 const Dashboard = ({ ratings }) => {
+  const ratingsCount = ratings.length;
+
   return (
     <div>
       <div className="main-component">
         Dashboard...
         <AverageRatings
           ratingsData={countOccurences(ratings)}
-          ratingsCount={ratings.length}
+          ratingsCount={ratingsCount}
         />
       </div>
     </div>

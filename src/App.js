@@ -52,21 +52,33 @@ const App = () => {
 };
 
 const LoadedApp = ({ ratings, loadedMediaTypes }) => {
+  const [filteredRatings, setFilteredRatings] = useState(ratings);
+
+  const filterMovies = filterMap => {
+    const filtered = ratings.filter(
+      rating => filterMap.get(rating.mediaTypeId) === true
+    );
+
+    setFilteredRatings(filtered);
+  };
+
   const routeComponents = routes.map(({ path, component: Component, name }) => {
     return (
       <Route
         exact
         path={path}
-        render={() => <Component ratings={ratings} />}
+        render={() => <Component ratings={filteredRatings} />}
         key={name}
-        ratings={ratings}
       />
     );
   });
 
   return (
     <div>
-      <Sidebar loadedMediaTypes={loadedMediaTypes} />
+      <Sidebar
+        loadedMediaTypes={loadedMediaTypes}
+        filterMovies={filterMovies}
+      />
       {routeComponents}
       {/* <RatingsTable ratings={ratings} /> */}
     </div>

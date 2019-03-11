@@ -34,7 +34,7 @@ const AverageRatings = ({ ratingsData, ratingsCount }) => {
       formatter: val => {
         return Math.round((val / ratingsCount) * 100) + '%';
       },
-      offsetY: -20,
+      // offsetY: -20,
       style: {
         fontSize: '12px',
         colors: ['#ffffff'],
