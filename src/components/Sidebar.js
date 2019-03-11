@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 import routes from '../util/routes';
+import mediaTypes from '../constants/mediaTypes';
 
 /**
  * returns active route name
@@ -15,19 +17,51 @@ function getActiveRoute() {
   return currentRoute.name;
 }
 
-const Sidebar = () => {
+const Sidebar = ({ loadedMediaTypes }) => {
+  const precheckBoxes = loadedMediaTypes.map(typeId => {
+    return [typeId, true];
+  });
+  const [forceUpdate, setForceUpdate] = useState(1);
+  const [checkedItems, setCheckedItems] = useState(new Map(precheckBoxes));
+
+  const handleCheckboxChange = event => {
+    const id = parseInt(event.target.value);
+    const isChecked = event.target.checked;
+    setCheckedItems(checkedItems.set(id, isChecked));
+    setForceUpdate(forceUpdate + 1);
+  };
+
   return (
     <div className="sidebar">
       <SidebarElements />
+      <div>
+        <span>Filter</span>
+        {checkedItems
+          ? loadedMediaTypes.map(typeId => {
+              return (
+                <Checkbox
+                  key={typeId}
+                  id={typeId}
+                  name={mediaTypes[typeId].name}
+                  checked={checkedItems.get(typeId)}
+                  onChange={handleCheckboxChange}
+                />
+              );
+            })
+          : 'loading'}
+      </div>
     </div>
   );
+};
+
+Sidebar.propTypes = {
+  loadedMediaTypes: PropTypes.array,
 };
 
 const SidebarElements = () => {
   const [active, setActive] = useState(getActiveRoute());
 
   const isActive = name => {
-    console.log('isActive =>', name);
     return active === name;
   };
 
@@ -54,6 +88,28 @@ const SidebarElements = () => {
   ) : (
     'Loading'
   );
+};
+
+const Checkbox = ({ id, name, checked, onChange }) => {
+  return (
+    <label className="filter-checkbox">
+      <input
+        type="checkbox"
+        value={id}
+        name={name}
+        checked={checked}
+        onChange={onChange}
+      />
+      {name}
+    </label>
+  );
+};
+
+Checkbox.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  checked: PropTypes.bool,
+  onChange: PropTypes.func,
 };
 
 export default Sidebar;

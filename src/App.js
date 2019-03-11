@@ -10,14 +10,22 @@ import routes from './util/routes';
 const App = () => {
   const [loaded, setLoaded] = useState(false);
   const [ratings, setRatings] = useState();
+  const [loadedMediaTypes, setLoadedMediaTypes] = useState();
 
   useEffect(() => {
     if (!loaded) {
-      const sessionData = sessionStorage.getItem('ratings');
+      const sessionRatings = sessionStorage.getItem('ratings');
 
-      if (sessionData) {
-        console.log(JSON.parse(sessionData));
-        setRatings(JSON.parse(sessionData));
+      // load data from session storage
+      if (sessionRatings) {
+        console.log(JSON.parse(sessionRatings));
+        setRatings(JSON.parse(sessionRatings));
+        setLoadedMediaTypes(
+          sessionStorage
+            .getItem('mediaTypes')
+            .split(',')
+            .map(item => parseInt(item))
+        );
         setLoaded(true);
       }
     }
@@ -29,17 +37,21 @@ const App = () => {
       <div className="main-content">
         {loaded ? (
           <Router>
-            <LoadedApp ratings={ratings} />
+            <LoadedApp ratings={ratings} loadedMediaTypes={loadedMediaTypes} />
           </Router>
         ) : (
-          <Uploader setLoaded={setLoaded} setRatings={setRatings} />
+          <Uploader
+            setLoaded={setLoaded}
+            setRatings={setRatings}
+            setLoadedMediaTypes={setLoadedMediaTypes}
+          />
         )}
       </div>
     </div>
   );
 };
 
-const LoadedApp = ({ ratings }) => {
+const LoadedApp = ({ ratings, loadedMediaTypes }) => {
   const routeComponents = routes.map(({ path, component: Component, name }) => {
     return (
       <Route
@@ -54,7 +66,7 @@ const LoadedApp = ({ ratings }) => {
 
   return (
     <div>
-      <Sidebar />
+      <Sidebar loadedMediaTypes={loadedMediaTypes} />
       {routeComponents}
       {/* <RatingsTable ratings={ratings} /> */}
     </div>
@@ -63,6 +75,7 @@ const LoadedApp = ({ ratings }) => {
 
 LoadedApp.propTypes = {
   ratings: PropTypes.array,
+  loadedMediaTypes: PropTypes.array,
 };
 
 export default App;

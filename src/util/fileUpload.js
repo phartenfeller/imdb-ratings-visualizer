@@ -128,8 +128,6 @@ function convertDatatypes(data) {
       mediaType => mediaType.exportName === review.mediaType
     );
 
-    console.log(review.mediaType, ' => ', mediaTypeId);
-
     review.rating = parseInt(review.rating);
     review.runtime = parseInt(review.runtime);
     review.votes = parseInt(review.votes);
