@@ -50,6 +50,25 @@
   color: $text-gray;
 }
 
-.filter-checkbox {
+.filter-heading {
+  text-align: center;
+  margin-top: 100px;
+}
+
+.filter-checkbox-label {
+  margin-left: 16px;
   display: block;
+  color: $text-gray-dark;
+  cursor: pointer;
+}
+
+.custom-checkbox::before {
+  transition: border .2s ease;
+  border: 1px solid $cream-yellow;
+  background: $cream-yellow;
+}
+
+.custom-checkbox:checked {
+  border: 1px solid $cream-yellow;
+  background: $cream-yellow;
 }

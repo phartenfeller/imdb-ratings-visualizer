@@ -1,0 +1,11 @@
+@import '../../styles/colors.scss';
+.key-description {
+  width: 100%;
+  display: inline-block;
+  color: $text-gray-dark;
+}
+
+.key-number {
+  font-size: 36px;
+  float: right;
+}

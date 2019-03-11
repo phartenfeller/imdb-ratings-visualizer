@@ -36,7 +36,7 @@ const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
     <div className="sidebar">
       <SidebarElements />
       <div>
-        <span>Filter</span>
+        <h3 className="filter-heading">Filter</h3>
         {checkedItems
           ? loadedMediaTypes.map(typeId => {
               return (
@@ -94,9 +94,10 @@ const SidebarElements = () => {
 
 const Checkbox = ({ id, name, checked, onChange }) => {
   return (
-    <label className="filter-checkbox">
+    <label className="filter-checkbox-label">
       <input
         type="checkbox"
+        className="custom-checkbox"
         value={id}
         name={name}
         checked={checked}
