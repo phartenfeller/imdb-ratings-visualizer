@@ -66,7 +66,7 @@ const LoadedApp = ({ ratings, loadedMediaTypes }) => {
     return (
       <Route
         exact
-        path={path}
+        path={`${process.env.PUBLIC_URL}${path}`}
         render={() => <Component ratings={filteredRatings} />}
         key={name}
       />

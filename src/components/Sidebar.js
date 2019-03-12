@@ -7,15 +7,22 @@ import mediaTypes from '../constants/mediaTypes';
 
 /**
  * returns active route name
+ * @param {Array} routes
  * @return {String}
  */
-function getActiveRoute() {
+const getActiveRoute = routes => {
+  console.log(routes);
+
   const currentRoute = routes.find(route => {
-    return route.path === window.location.pathname;
+    const lastPath = window.location.pathname.substr(
+      window.location.pathname.lastIndexOf('/')
+    );
+
+    return route.path === lastPath;
   });
 
   return currentRoute.name;
-}
+};
 
 const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
   const precheckBoxes = loadedMediaTypes.map(typeId => {
@@ -61,7 +68,7 @@ Sidebar.propTypes = {
 };
 
 const SidebarElements = () => {
-  const [active, setActive] = useState(getActiveRoute());
+  const [active, setActive] = useState(getActiveRoute(routes));
 
   const isActive = name => {
     return active === name;
@@ -72,7 +79,10 @@ const SidebarElements = () => {
       {routes.map(route => {
         return (
           <div key={route.name}>
-            <Link to={route.path} className="sidebar-link">
+            <Link
+              to={`${process.env.PUBLIC_URL}${route.path}`}
+              className="sidebar-link"
+            >
               <div className={isActive(route.name) ? 'active-tab' : ''}>
                 <div
                   onClick={() => setActive(route.name)}
