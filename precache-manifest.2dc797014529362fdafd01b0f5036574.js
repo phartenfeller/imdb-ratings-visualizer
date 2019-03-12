@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "3e7a60c1e93eb7af4d8f",
-    "url": "/imdb-ratings-visualizer/static/css/main.97e59377.chunk.css"
+    "revision": "cc682d1e68bca0c071ac",
+    "url": "/imdb-ratings-visualizer/static/css/main.c587eb28.chunk.css"
   },
   {
-    "revision": "3e7a60c1e93eb7af4d8f",
-    "url": "/imdb-ratings-visualizer/static/js/main.3e7a60c1.chunk.js"
+    "revision": "cc682d1e68bca0c071ac",
+    "url": "/imdb-ratings-visualizer/static/js/main.cc682d1e.chunk.js"
   },
   {
     "revision": "2d57992af04eff17e876",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/imdb-ratings-visualizer/static/js/2.194b5c55.chunk.js"
   },
   {
-    "revision": "cafd817143c1bf39829e8cfe07d9c62c",
+    "revision": "8a2ed1a0d1016fe33440c9ddb116f577",
     "url": "/imdb-ratings-visualizer/index.html"
   }
 ];
