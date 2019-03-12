@@ -106,14 +106,13 @@ function changeHeaders(csv) {
   cleanedCsv = cleanedCsv.replace('Date Rated,', 'dateRatedString,');
   cleanedCsv = cleanedCsv.replace('Genres,', 'genres,');
   cleanedCsv = cleanedCsv.replace('Title Type,', 'mediaType,');
-  cleanedCsv = cleanedCsv.replace('Directors,', 'directors,');
   cleanedCsv = cleanedCsv.replace('Num Votes,', 'votes,');
   cleanedCsv = cleanedCsv.replace('Runtime (mins),', 'runtime,');
   cleanedCsv = cleanedCsv.replace('Release Date,', 'releaseDate,');
   cleanedCsv = cleanedCsv.replace('URL,', 'url,');
   cleanedCsv = cleanedCsv.replace('Year,', 'year,');
-  cleanedCsv = cleanedCsv.replace('Directors,', 'directors,');
   cleanedCsv = cleanedCsv.replace('IMDb Rating,', 'imdbRating,');
+  cleanedCsv = cleanedCsv.replace(',Directors', ',directors');
   return cleanedCsv;
 }
 
@@ -136,6 +135,8 @@ function convertDatatypes(data) {
     review.dateRated = new Date(review.dateRatedString);
     review.mediaTypeId = mediaTypeId;
     review.mediaType = mediaTypes[mediaTypeId].name;
+    review.genres = review.genres.split(',');
+    review.directors = review.directors.split(',');
     return review;
   });
 
