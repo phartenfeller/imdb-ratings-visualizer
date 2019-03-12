@@ -1,5 +1,6 @@
 import RatingsTable from '../components/RatingsTable';
 import Dashboard from '../components/Dashboard';
+import Time from '../components/Time';
 
 const routes = [
   {
@@ -13,6 +14,12 @@ const routes = [
     icon: 'list',
     path: '/ratings',
     component: RatingsTable,
+  },
+  {
+    name: 'Time',
+    icon: 'calendar_today',
+    path: '/time',
+    component: Time,
   },
 ];
 

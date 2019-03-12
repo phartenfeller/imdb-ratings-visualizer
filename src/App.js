@@ -6,6 +6,7 @@ import TitleBar from './components/TitleBar';
 import Sidebar from './components/Sidebar';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import routes from './util/routes';
+import recoverData from './util/recoverData';
 
 const App = () => {
   const [loaded, setLoaded] = useState(false);
@@ -14,22 +15,9 @@ const App = () => {
 
   useEffect(() => {
     if (!loaded) {
-      const sessionRatings = sessionStorage.getItem('ratings');
-
-      // load data from session storage
-      if (sessionRatings) {
-        console.log(JSON.parse(sessionRatings));
-        setRatings(JSON.parse(sessionRatings));
-        setLoadedMediaTypes(
-          sessionStorage
-            .getItem('mediaTypes')
-            .split(',')
-            .map(item => parseInt(item))
-        );
-        setLoaded(true);
-      }
+      recoverData(setRatings, setLoadedMediaTypes, setLoaded);
     }
-  });
+  }, [loaded]);
 
   return (
     <div className="App">
