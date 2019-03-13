@@ -12,8 +12,8 @@ const AverageRatings = ({ ratingsData, ratingsCount }) => {
       data={ratingsData}
       dataCount={ratingsCount}
       seriesName="Ratings"
-      height="350"
-      width="600"
+      height={350}
+      width={600}
     />
   );
 };

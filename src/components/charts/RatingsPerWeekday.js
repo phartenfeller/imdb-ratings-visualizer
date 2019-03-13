@@ -44,8 +44,8 @@ const RatingsPerWeekday = ({ ratings }) => {
         data={ratingsPerWeekday}
         dataCount={ratingsCount}
         seriesName="Weekday"
-        width="600"
-        height="400"
+        width={600}
+        height={400}
       />
     </div>
   );

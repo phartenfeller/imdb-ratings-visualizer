@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import RatingsPerWeekday from './charts/RatingsPerWeekday';
+import RatingsPerYear from './charts/RatingsPerYear';
 
 const Time = ({ ratings }) => {
   return (
     <div className="main-component">
-      Time...
       <RatingsPerWeekday ratings={ratings} />
+      <RatingsPerYear ratings={ratings} />
     </div>
   );
 };
