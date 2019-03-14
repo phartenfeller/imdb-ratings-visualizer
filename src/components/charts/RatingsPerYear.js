@@ -41,7 +41,7 @@ const RatingsPerYear = ({ ratings }) => {
       dataCount={ratingsCount}
       seriesName="Year"
       width={600}
-      height={400}
+      height={350}
     />
   );
 };

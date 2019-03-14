@@ -135,8 +135,8 @@ function convertDatatypes(data) {
     review.dateRated = new Date(review.dateRatedString);
     review.mediaTypeId = mediaTypeId;
     review.mediaType = mediaTypes[mediaTypeId].name;
-    review.genres = review.genres.split(',');
-    review.directors = review.directors.split(',');
+    review.genres = review.genres.split(', ');
+    review.directors = review.directors.split(', ');
     return review;
   });
 
