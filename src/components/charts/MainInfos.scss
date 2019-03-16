@@ -1,4 +1,15 @@
 @import '../../styles/colors.scss';
+.info-value {
+  font-size: 48px;
+  text-shadow: 0px 1px 10px rgba(204, 204, 204, 0.3);
+}
+
+.info-key {
+  font-size: 18px;
+  color: $text-gray-dark;
+  margin-left: 10px;
+}
+
 .key-description {
   width: 100%;
   display: inline-block;

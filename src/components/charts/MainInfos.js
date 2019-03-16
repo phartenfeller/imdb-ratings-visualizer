@@ -1,28 +1,36 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './Ratings.scss';
+import './MainInfos.scss';
 
-const Ratings = ({ ratings, ratingsCount }) => {
+const MainInfos = ({ ratings, ratingsCount }) => {
   const ratingsSum = ratings.reduce((a, b) => a + (b.rating || 0), 0);
   const average = (ratingsSum / ratingsCount).toFixed(1);
 
   return (
     <div className="chart-container">
-      <div>
-        <div className="key-description">Total Ratings</div>
-        <div className="key-number">{ratingsCount}</div>
-      </div>
-      <div>
-        <div className="key-description">Average Rating</div>
-        <div className="key-number">{average}</div>
-      </div>
+      <KeyValue description="ratings" value={ratingsCount} />
+      <KeyValue description="your avg rating" value={average} />
     </div>
   );
 };
 
-Ratings.propTypes = {
+MainInfos.propTypes = {
   ratings: PropTypes.array,
   ratingsCount: PropTypes.number,
 };
 
-export default Ratings;
+const KeyValue = ({ description, value }) => {
+  return (
+    <div>
+      <span className="info-value">{value}</span>
+      <span className="info-key">{description}</span>
+    </div>
+  );
+};
+
+KeyValue.propTypes = {
+  description: PropTypes.string,
+  value: PropTypes.number,
+};
+
+export default MainInfos;

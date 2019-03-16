@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import AverageRatings from './charts/AverageRatings';
-import Ratings from './charts/Ratings';
+import MainInfos from './charts/MainInfos';
 import './Dashboard.scss';
 
 const countOccurences = ratings => {
@@ -22,7 +22,7 @@ const Dashboard = ({ ratings }) => {
   return (
     <div>
       <div className="main-component" style={{ height: '384px' }}>
-        <Ratings ratings={ratings} ratingsCount={ratingsCount} />
+        <MainInfos ratings={ratings} ratingsCount={ratingsCount} />
         <AverageRatings
           ratingsData={countOccurences(ratings)}
           ratingsCount={ratingsCount}
