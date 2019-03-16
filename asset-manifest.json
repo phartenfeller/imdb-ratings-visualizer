@@ -1,13 +1,13 @@
 {
-  "main.css": "/imdb-ratings-visualizer/static/css/main.1b261d4e.chunk.css",
-  "main.js": "/imdb-ratings-visualizer/static/js/main.01d96d40.chunk.js",
-  "main.js.map": "/imdb-ratings-visualizer/static/js/main.01d96d40.chunk.js.map",
+  "main.css": "/imdb-ratings-visualizer/static/css/main.45033714.chunk.css",
+  "main.js": "/imdb-ratings-visualizer/static/js/main.6d73ca09.chunk.js",
+  "main.js.map": "/imdb-ratings-visualizer/static/js/main.6d73ca09.chunk.js.map",
   "runtime~main.js": "/imdb-ratings-visualizer/static/js/runtime~main.2d57992a.js",
   "runtime~main.js.map": "/imdb-ratings-visualizer/static/js/runtime~main.2d57992a.js.map",
-  "static/js/2.7a2099e9.chunk.js": "/imdb-ratings-visualizer/static/js/2.7a2099e9.chunk.js",
-  "static/js/2.7a2099e9.chunk.js.map": "/imdb-ratings-visualizer/static/js/2.7a2099e9.chunk.js.map",
+  "static/js/2.bb974eff.chunk.js": "/imdb-ratings-visualizer/static/js/2.bb974eff.chunk.js",
+  "static/js/2.bb974eff.chunk.js.map": "/imdb-ratings-visualizer/static/js/2.bb974eff.chunk.js.map",
   "index.html": "/imdb-ratings-visualizer/index.html",
-  "precache-manifest.cece9065eb8d4ecdb2e0f4db4b68797f.js": "/imdb-ratings-visualizer/precache-manifest.cece9065eb8d4ecdb2e0f4db4b68797f.js",
+  "precache-manifest.4dad26db306a295ce15a55137ea9f143.js": "/imdb-ratings-visualizer/precache-manifest.4dad26db306a295ce15a55137ea9f143.js",
   "service-worker.js": "/imdb-ratings-visualizer/service-worker.js",
-  "static/css/main.1b261d4e.chunk.css.map": "/imdb-ratings-visualizer/static/css/main.1b261d4e.chunk.css.map"
+  "static/css/main.45033714.chunk.css.map": "/imdb-ratings-visualizer/static/css/main.45033714.chunk.css.map"
 }
