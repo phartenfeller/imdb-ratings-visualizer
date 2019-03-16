@@ -113,6 +113,7 @@ const Checkbox = ({ id, name, checked, onChange }) => {
         checked={checked}
         onChange={onChange}
       />
+      <span className="checkmark" />
       {name}
     </label>
   );
