@@ -54,6 +54,9 @@ const LineColumn = ({
         },
       },
     },
+    tooltip: {
+      theme: 'dark',
+    },
   };
 
   const series = [

@@ -2,19 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ReactApexCharts from 'react-apexcharts';
 
-const colors = [
-  '#FF355E',
-  '#FD5B78',
-  '#FF6037',
-  '#FF9933',
-  '#FFCC33',
-  '#FFFF66',
-  '#CCFF00',
-  '#66FF66',
-  '#50BFE6',
-  '#FF00CC',
-];
-
 const BarChart = ({
   title,
   categories,
@@ -25,7 +12,7 @@ const BarChart = ({
   width,
 }) => {
   const options = {
-    colors,
+    colors: ['#FFEE70'],
     plotOptions: {
       bar: {
         dataLabels: {
@@ -38,21 +25,30 @@ const BarChart = ({
       },
     },
     dataLabels: {
+      offsetY: -22,
       enabled: true,
       formatter: val => {
         return Math.round((val / dataCount) * 100) + '%';
       },
       style: {
         fontSize: '12px',
-        colors: ['#ffffff'],
+        colors: undefined,
       },
     },
     xaxis: {
       categories,
-      labels: {
-        style: {
-          colors,
-        },
+      labels: {},
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shade: 'light',
+        type: 'vertical',
+        shadeIntensity: 0.4,
+        inverseColors: false,
+        opacityFrom: 1,
+        opacityTo: 1,
+        stops: [50, 100],
       },
     },
     title: {
@@ -64,6 +60,7 @@ const BarChart = ({
       },
     },
     tooltip: {
+      theme: 'dark',
       x: {
         show: false,
       },
