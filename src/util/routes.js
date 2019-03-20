@@ -1,6 +1,7 @@
 import RatingsTable from '../components/RatingsTable';
 import Dashboard from '../components/Dashboard';
 import Time from '../components/Time';
+import Deviations from '../components/Deviations';
 
 const routes = [
   {
@@ -20,6 +21,12 @@ const routes = [
     icon: 'calendar_today',
     path: '/time',
     component: Time,
+  },
+  {
+    name: 'Deviations',
+    icon: 'call_split',
+    path: '/deviations',
+    component: Deviations,
   },
 ];
 

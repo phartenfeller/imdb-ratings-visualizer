@@ -20,14 +20,12 @@ const Dashboard = ({ ratings }) => {
   const ratingsCount = ratings.length;
 
   return (
-    <div>
-      <div className="main-component" style={{ height: '384px' }}>
-        <MainInfos ratings={ratings} ratingsCount={ratingsCount} />
-        <AverageRatings
-          ratingsData={countOccurences(ratings)}
-          ratingsCount={ratingsCount}
-        />
-      </div>
+    <div className="main-component">
+      <MainInfos ratings={ratings} ratingsCount={ratingsCount} />
+      <AverageRatings
+        ratingsData={countOccurences(ratings)}
+        ratingsCount={ratingsCount}
+      />
     </div>
   );
 };

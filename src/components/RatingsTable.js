@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ReactTable from 'react-table';
+import Table from './Table';
 import './RatingsTable.scss';
 
 const RatingsTable = ({ ratings }) => {
@@ -38,35 +38,15 @@ const RatingsTable = ({ ratings }) => {
     },
   ];
 
-  const nextText = (
-    <span>
-      <span style={{ verticalAlign: 'middle' }}>Next</span>
-      <i className="material-icons pagination-icon">keyboard_arrow_right</i>
-    </span>
-  );
-
-  const previousText = (
-    <span>
-      <i className="material-icons pagination-icon left-pagination-icon">
-        keyboard_arrow_left
-      </i>
-      <span>Previous</span>
-    </span>
-  );
-
   return (
-    <ReactTable
-      data={ratings}
-      // resolveData={data => data.map(row => row)}
-      columns={columns}
-      className="-striped -highlight main-component"
-      defaultSorted={defaultSorted}
-      defaultPageSize={50}
-      pageSizeOptions={[5, 10, 20, 25, 50, 100, 250, 1000]}
-      nextText={nextText}
-      previousText={previousText}
-      minRows={0}
-    />
+    <div className="main-component">
+      <Table
+        data={ratings}
+        columns={columns}
+        defaultSorted={defaultSorted}
+        defaultPageSize={50}
+      />
+    </div>
   );
 };
 

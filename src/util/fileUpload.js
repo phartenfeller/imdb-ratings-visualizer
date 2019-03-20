@@ -137,6 +137,9 @@ function convertDatatypes(data) {
     review.mediaType = mediaTypes[mediaTypeId].name;
     review.genres = review.genres.split(', ');
     review.directors = review.directors.split(', ');
+    review.deviation = parseFloat(
+      (review.rating - review.imdbRating).toFixed(1)
+    );
     return review;
   });
 
