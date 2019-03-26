@@ -1,4 +1,9 @@
 @import "../styles/colors.scss";
+
+.cell-center {
+  text-align: center;
+}
+
 .pagination-icon {
   color: $icon-text-color;
   vertical-align: middle;
@@ -15,6 +20,7 @@
   -ms-flex-direction: column;
   flex-direction: column;
   border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: $table-background;
 }
 
 .ReactTable * {
@@ -37,10 +43,13 @@
   align-items: stretch;
   width: 100%;
   border-collapse: collapse;
-  overflow: auto
+  overflow: auto;
 }
 
 .ReactTable .rt-thead {
+  color: $text-light;
+  background-color: $table-header-background;
+  text-transform: uppercase;
   -webkit-box-flex: 1;
   -ms-flex: 1 0 auto;
   flex: 1 0 auto;

@@ -39,7 +39,7 @@ const Table = ({ data, columns, defaultSorted, defaultPageSize }) => {
 Table.propTypes = {
   data: PropTypes.array,
   columns: PropTypes.array,
-  defaultSorted: PropTypes.object,
+  defaultSorted: PropTypes.array,
   defaultPageSize: PropTypes.number,
 };
 

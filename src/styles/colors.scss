@@ -9,11 +9,13 @@ $sidebar-color: hsl(204, 14%, 7%);
 $box-color: hsl(214, 20%, 3%);
 $text-gray: hsl(0, 0%, 60%);
 $text-light: hsl(0, 0%, 80%);
-$text-gray-dark: hsl(0, 0%, 60%);
+$text-gray-dark: hsl(0, 0%, 30%);
 $transparent: hsla(0, 0%, 0%, 0);
 $icon-text-color: hsl(0, 0%, 50%);
 $icon-text-color-dark: hsl(0, 0%, 30%);
+$table-header-background: hsl(220, 7, 13);
+$table-background: hsl(220, 7, 16);
 :export {
   colorBlack: $black;
-  creamYellow: $cream-yellow
+  creamYellow: $cream-yellow;
 }
