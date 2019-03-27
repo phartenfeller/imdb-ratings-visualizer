@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Table from './Table';
+import getLinkWithIcon from '../util/getLinkWithIcon';
+import './Deviations.scss';
 
 /**
  * Splits deviations to negatives and positives and sorts them
@@ -30,32 +32,47 @@ const Deviation = ({ ratings }) => {
 
   const columns = [
     {
+      Header: '',
+      accessor: 'url',
+      Cell: ({ row }) => getLinkWithIcon(row.url),
+      maxWidth: 64,
+      className: 'cell-center',
+    },
+    {
       Header: 'Title',
       accessor: 'title',
     },
     {
-      Header: 'Your Rating',
+      Header: 'Rating',
       accessor: 'rating',
+      maxWidth: 100,
+      className: 'cell-center',
     },
     {
-      Header: 'IMDb Rating',
+      Header: 'IMDb',
       accessor: 'imdbRating',
+      maxWidth: 100,
+      className: 'cell-center',
     },
     {
       Header: 'Deviation',
       accessor: 'deviation',
+      maxWidth: 100,
+      className: 'cell-center',
     },
   ];
 
   return (
     <div className="main-component">
-      <div style={{ float: 'left', width: '45%' }}>
-        <h3>Positive</h3>
-        <Table data={positives} columns={columns} defaultPageSize={15} />
-      </div>
-      <div style={{ float: 'right', width: '45%' }}>
-        <h3>Negative</h3>
-        <Table data={negatives} columns={columns} defaultPageSize={15} />
+      <div style={{ display: 'flex' }}>
+        <div className="deviation-table">
+          <h3>Positive</h3>
+          <Table data={positives} columns={columns} defaultPageSize={15} />
+        </div>
+        <div className="deviation-table">
+          <h3>Negative</h3>
+          <Table data={negatives} columns={columns} defaultPageSize={15} />
+        </div>
       </div>
     </div>
   );

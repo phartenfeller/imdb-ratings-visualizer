@@ -3,26 +3,14 @@ import PropTypes from 'prop-types';
 import Table from './Table';
 import { Link } from 'react-router-dom';
 import './RatingsTable.scss';
-
-const getLink = url => {
-  return (
-    <a
-      href={url}
-      target="_blank"
-      className="material-icons imdb-link"
-      rel="noreferrer noopener"
-    >
-      open_in_new
-    </a>
-  );
-};
+import getLinkWithIcon from '../util/getLinkWithIcon';
 
 const RatingsTable = ({ ratings }) => {
   const columns = [
     {
       Header: '',
       accessor: 'url',
-      Cell: ({ row }) => getLink(row.url),
+      Cell: ({ row }) => getLinkWithIcon(row.url),
       maxWidth: 64,
       className: 'cell-center',
     },
