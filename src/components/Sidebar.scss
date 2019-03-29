@@ -6,7 +6,7 @@
   position: fixed;
   left: 0;
   overflow-x: hidden;
-  background-color: $sidebar-color;
+  background-color: $bg-color-dark;
   height: 100%;
 }
 
@@ -64,7 +64,6 @@
   font-weight: normal;
   font-size: 18px;
   line-height: normal;
-  color: $text-gray-dark;
   cursor: pointer;
   position: relative;
   -webkit-user-select: none;

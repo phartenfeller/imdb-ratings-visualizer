@@ -1,4 +1,4 @@
-@import '../../styles/colors.scss';
+@import "../../styles/colors.scss";
 .info-value {
   color: $text-light;
   font-size: 48px;
@@ -8,7 +8,6 @@
 
 .info-key {
   font-size: 18px;
-  color: $text-gray-dark;
   padding-left: 16px;
   padding-top: 12px;
 }
