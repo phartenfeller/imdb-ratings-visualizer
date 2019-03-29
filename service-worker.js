@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/imdb-ratings-visualizer/precache-manifest.17f1809053460e485fb3e99eb5152c54.js"
+  "/imdb-ratings-visualizer/precache-manifest.e17e167142e5f877629c4480a1273b9d.js"
 );
 
 workbox.clientsClaim();
