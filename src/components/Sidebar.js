@@ -14,13 +14,14 @@ const getActiveRoute = routes => {
   console.log(routes);
 
   const currentRoute = routes.find(route => {
-    const lastPath = window.location.pathname.substr(
-      window.location.pathname.lastIndexOf('/')
+    const lastPath = window.location.href.substr(
+      window.location.href.lastIndexOf('/')
     );
 
     return route.path === lastPath;
   });
 
+  console.log('currentRoute =>', currentRoute);
   return currentRoute.name;
 };
 
@@ -79,10 +80,7 @@ const SidebarElements = () => {
       {routes.map(route => {
         return (
           <div key={route.name}>
-            <Link
-              to={`${process.env.PUBLIC_URL}${route.path}`}
-              className="sidebar-link"
-            >
+            <Link to={route.path} className="sidebar-link">
               <div className={isActive(route.name) ? 'active-tab' : ''}>
                 <div
                   onClick={() => setActive(route.name)}

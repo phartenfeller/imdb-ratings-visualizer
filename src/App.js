@@ -4,7 +4,7 @@ import './App.scss';
 import Uploader from './components/Uploader';
 import TitleBar from './components/TitleBar';
 import Sidebar from './components/Sidebar';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import routes from './util/routes';
 import recoverData from './util/recoverData';
 
@@ -51,10 +51,16 @@ const LoadedApp = ({ ratings, loadedMediaTypes }) => {
   };
 
   const routeComponents = routes.map(({ path, component: Component, name }) => {
-    return (
+    return path === '/' ? (
       <Route
         exact
-        path={`${process.env.PUBLIC_URL}${path}`}
+        path={path}
+        render={() => <Component ratings={filteredRatings} />}
+        key={name}
+      />
+    ) : (
+      <Route
+        path={path}
         render={() => <Component ratings={filteredRatings} />}
         key={name}
       />
