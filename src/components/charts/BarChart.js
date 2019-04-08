@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactApexCharts from 'react-apexcharts';
+import CSS from '../../styles/colors';
 
 const BarChart = ({
   title,
@@ -12,7 +13,7 @@ const BarChart = ({
   width,
 }) => {
   const options = {
-    colors: ['#FFEE70'],
+    colors: [CSS.creamYellow],
     plotOptions: {
       bar: {
         dataLabels: {
@@ -28,16 +29,21 @@ const BarChart = ({
       offsetY: -22,
       enabled: true,
       formatter: val => {
-        return Math.round((val / dataCount) * 100) + '%';
+        return val > 0 ? Math.round((val / dataCount) * 100) + '%' : '';
       },
       style: {
         fontSize: '12px',
-        colors: undefined,
+        colors: [CSS.creamYellow],
       },
     },
     xaxis: {
       categories,
-      labels: {},
+      labels: {
+        style: {
+          colors: CSS.textGray,
+          fontSize: '15px',
+        },
+      },
     },
     fill: {
       type: 'gradient',
@@ -56,7 +62,8 @@ const BarChart = ({
       floating: true,
       align: 'center',
       style: {
-        color: '#ffffff',
+        color: CSS.textLight,
+        fontSize: '22px',
       },
     },
     tooltip: {
