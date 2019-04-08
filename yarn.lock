@@ -1306,9 +1306,9 @@ anymatch@^2.0.0:
     normalize-path "^2.1.1"
 
 apexcharts@^3.5.1:
-  version "3.6.5"
-  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.6.5.tgz#6ca9e2e501451d3fff436f8e8ae05fd12b5476b5"
-  integrity sha512-HSDNjTPMEpQaM0MadPj9f6gNvBKSmQXuC100h4Ev2mQFjC1rJId6b1KgF2yKh0In+iXuTXxszI58ozWhKNkbYQ==
+  version "3.6.6"
+  resolved "https://registry.yarnpkg.com/apexcharts/-/apexcharts-3.6.6.tgz#cf1a3fa302b0f81d502e5e42b434e9bc9eba3f78"
+  integrity sha512-NM9QmL1Qn0h+ncOMXaaqksHiJqlhrsxu/ifRCeMOoP5cz0etQwlyExWPzHTz4w6GAZNhUHtxYMtqNf0Vkaw0+Q==
   dependencies:
     promise-polyfill "8.1.0"
     svg.draggable.js "^2.2.1"
