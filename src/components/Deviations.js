@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import Table from './Table';
 import getLinkWithIcon from '../util/getLinkWithIcon';
 import getSpanWithTooltip from '../util/getSpanWithTooltip';
-import './Deviations.scss';
 
 /**
  * Splits deviations to negatives and positives and sorts them

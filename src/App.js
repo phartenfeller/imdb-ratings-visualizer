@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import './App.scss';
 import Uploader from './components/Uploader';
-import TitleBar from './components/TitleBar';
 import Sidebar from './components/Sidebar';
 import { HashRouter as Router, Route } from 'react-router-dom';
 import routes from './util/routes';
@@ -20,9 +18,9 @@ const App = () => {
   }, [loaded]);
 
   return (
-    <div className="App">
-      <TitleBar />
-      <div className="main-content">
+    <>
+      {/* <TitleBar /> */}
+      <div>
         {loaded ? (
           <Router>
             <LoadedApp ratings={ratings} loadedMediaTypes={loadedMediaTypes} />
@@ -35,7 +33,7 @@ const App = () => {
           />
         )}
       </div>
-    </div>
+    </>
   );
 };
 
@@ -68,12 +66,13 @@ const LoadedApp = ({ ratings, loadedMediaTypes }) => {
   });
 
   return (
-    <div>
+    <div className="flex">
       <Sidebar
+        className="flex-1"
         loadedMediaTypes={loadedMediaTypes}
         filterMovies={filterMovies}
       />
-      {routeComponents}
+      <div className="flex-1">{routeComponents}</div>
       {/* <RatingsTable ratings={ratings} /> */}
     </div>
   );

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './MainInfos.scss';
 
 /**
  * Get average, public average and days watched
@@ -26,15 +25,11 @@ const MainInfos = ({ ratings, ratingsCount }) => {
   );
 
   return (
-    <div className="chart-container">
-      <table>
-        <tbody>
-          <KeyValue description="ratings" value={ratingsCount} />
-          <KeyValue description="your avg rating" value={average} />
-          <KeyValue description="public avg rating" value={pubAverage} />
-          <KeyValue description="days watched" value={daysWatched} />
-        </tbody>
-      </table>
+    <div className="bg-custgrayaccent flex py-6 shadow-innercard w-1/2 rounded-lg">
+      <KeyValue description="Ratings" value={ratingsCount} />
+      <KeyValue description="Days watched" value={daysWatched} />
+      <KeyValue description="Your Avg" value={average} />
+      <KeyValue description="Public Avg" value={pubAverage} />
     </div>
   );
 };
@@ -46,10 +41,10 @@ MainInfos.propTypes = {
 
 const KeyValue = ({ description, value }) => {
   return (
-    <tr>
-      <td className="info-value">{value}</td>
-      <td className="info-key">{description}</td>
-    </tr>
+    <div className="inline-block flex-1 mx-4">
+      <div className="text-gray-600 text-lg text-center">{description}</div>
+      <div className="text-3xl text-indigo-200 text-center">{value}</div>
+    </div>
   );
 };
 

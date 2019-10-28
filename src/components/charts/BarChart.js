@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactApexCharts from 'react-apexcharts';
-import CSS from '../../styles/colors';
+import resolveConfig from 'tailwindcss/resolveConfig';
+import * as twconfig from '../../tailwind';
 
 const BarChart = ({
   title,
@@ -13,7 +14,7 @@ const BarChart = ({
   width,
 }) => {
   const options = {
-    colors: [CSS.creamYellow],
+    colors: [twconfig.theme.color.yellow['100']],
     plotOptions: {
       bar: {
         dataLabels: {

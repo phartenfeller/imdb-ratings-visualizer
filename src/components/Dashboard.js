@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import AverageRatings from './charts/AverageRatings';
 import MainInfos from './charts/MainInfos';
-import './Dashboard.scss';
 
 const countOccurences = ratings => {
   const ratingsArray = ratings.map(rating => rating.rating);
@@ -20,9 +19,14 @@ const Dashboard = ({ ratings }) => {
   const ratingsCount = ratings.length;
 
   return (
-    <div className="main-component">
-      <MainInfos ratings={ratings} ratingsCount={ratingsCount} />
+    <div className="m-10 flex">
+      <MainInfos
+        className="flex-1 w-1/2"
+        ratings={ratings}
+        ratingsCount={ratingsCount}
+      />
       <AverageRatings
+        className="flex-1 w-1/2"
         ratingsData={countOccurences(ratings)}
         ratingsCount={ratingsCount}
       />

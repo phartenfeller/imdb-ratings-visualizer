@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import './Sidebar.scss';
 import { Link } from 'react-router-dom';
 import routes from '../util/routes';
 import mediaTypes from '../constants/mediaTypes';
@@ -41,10 +40,12 @@ const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
   };
 
   return (
-    <div className="sidebar">
+    <div className="w-14 h-screen bg-custgraybright shadow-inner">
+      <h1 className="text-purple-300 font-semibold text-2xl text-center text-shadow my-4">
+        Movies Rating Visualizer
+      </h1>
       <SidebarElements />
-      <div>
-        <h3 className="filter-heading">Filter</h3>
+      <div className="mt-10">
         {checkedItems
           ? loadedMediaTypes.map(typeId => {
               return (
@@ -79,19 +80,29 @@ const SidebarElements = () => {
     <div>
       {routes.map(route => {
         return (
-          <div key={route.name}>
-            <Link to={route.path} className="sidebar-link">
-              <div className={isActive(route.name) ? 'active-tab' : ''}>
-                <div
-                  onClick={() => setActive(route.name)}
-                  className="sidebar-box"
+          <Link to={route.path} className="sidebar-link mb-6" key={route.name}>
+            <div className={isActive(route.name) ? 'active-tab' : ''}>
+              <div
+                onClick={() => setActive(route.name)}
+                className="sidebar-box"
+              >
+                <i
+                  className={`material-icons text-2xl align-middle pl-3 ${
+                    isActive(route.name) ? 'text-purple-200' : 'text-gray-700'
+                  }`}
                 >
-                  <i className="material-icons sidebar-icon">{route.icon}</i>
-                  <span className="sidebar-text">{route.name}</span>
-                </div>
+                  {route.icon}
+                </i>
+                <span
+                  className={`text-2xl align-middle pl-3 ${
+                    isActive(route.name) ? 'text-gray-400' : 'text-gray-500'
+                  }`}
+                >
+                  {route.name}
+                </span>
               </div>
-            </Link>
-          </div>
+            </div>
+          </Link>
         );
       })}
     </div>
@@ -102,16 +113,16 @@ const SidebarElements = () => {
 
 const Checkbox = ({ id, name, checked, onChange }) => {
   return (
-    <label className="filter-checkbox-label">
+    <label className="block mx-4">
       <input
         type="checkbox"
-        className="custom-checkbox"
+        className="form-checkbox text-gray-700 h-5 w-5"
         value={id}
         name={name}
         checked={checked}
         onChange={onChange}
       />
-      <span className="checkmark" />
+      <span className="pl-3 text-xl" />
       {name}
     </label>
   );

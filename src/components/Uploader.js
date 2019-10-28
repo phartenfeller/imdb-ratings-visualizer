@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { uploadFile } from '../util/fileUpload';
 import getUniqueMediaTypes from '../util/getUniqueMediaTypes';
-import './Uploader.scss';
 
 const Uploader = ({ setLoaded, setRatings, setLoadedMediaTypes }) => {
   const upload = async () => {
@@ -18,9 +17,22 @@ const Uploader = ({ setLoaded, setRatings, setLoadedMediaTypes }) => {
   };
 
   return (
-    <div className="uploader">
-      <h1>Upload IMDb Ratings CSV</h1>
-      <input type="file" id="fileUpload" onChange={upload} />
+    <div className="text-center">
+      <h1 className="text-4xl pb-10 text-purple-300">
+        Upload IMDb Ratings CSV
+      </h1>
+      {/* <input type="file" id="fileUpload" onChange={upload} /> */}
+
+      <label className="w-64 m-auto flex flex-col items-center px-4 py-6 bg-gray-800 text-blue rounded-lg shadow-xl tracking-wide uppercase cursor-pointer hover:text-purple-200">
+        <i className="material-icons">cloud_upload</i>
+        <span className="mt-2 text-base leading-normal">Select a file</span>
+        <input
+          type="file"
+          id="fileUpload"
+          className="hidden"
+          onChange={upload}
+        />
+      </label>
     </div>
   );
 };
