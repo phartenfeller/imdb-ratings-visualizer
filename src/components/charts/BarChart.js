@@ -1,20 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactApexCharts from 'react-apexcharts';
-import resolveConfig from 'tailwindcss/resolveConfig';
-import * as twconfig from '../../tailwind';
 
-const BarChart = ({
-  title,
-  categories,
-  data,
-  dataCount,
-  seriesName,
-  height,
-  width,
-}) => {
+const BarChart = ({ title, categories, data, dataCount, seriesName }) => {
+  const series = [
+    {
+      name: seriesName,
+      data: data,
+    },
+  ];
+
   const options = {
-    colors: [twconfig.theme.color.yellow['100']],
+    xaxis: {
+      categories,
+    },
+  };
+
+  /*
+  const options = {
+    colors: ['ffffff'],
     plotOptions: {
       bar: {
         dataLabels: {
@@ -77,6 +81,8 @@ const BarChart = ({
       show: false,
     },
     chart: {
+      width: '100%',
+      height: '100%',
       toolbar: {
         tools: {
           download: false,
@@ -84,24 +90,16 @@ const BarChart = ({
       },
     },
   };
-
-  const series = [
-    {
-      name: seriesName,
-      data: data,
-    },
-  ];
+  */
 
   return (
-    <div className="chart-container">
-      <ReactApexCharts
-        options={options}
-        series={series}
-        type="bar"
-        height={height}
-        width={width}
-      />
-    </div>
+    <ReactApexCharts
+      options={options}
+      series={series}
+      type="bar"
+      width="100%"
+      height="350"
+    />
   );
 };
 
@@ -111,8 +109,6 @@ BarChart.propTypes = {
   data: PropTypes.array,
   dataCount: PropTypes.number,
   seriesName: PropTypes.string,
-  height: PropTypes.number,
-  width: PropTypes.number,
 };
 
 export default BarChart;

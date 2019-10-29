@@ -25,3 +25,7 @@ html {
     text-shadow: none;
   }
 }
+
+.card {
+  @apply bg-custgrayaccent flex py-6 shadow-innercard rounded-lg mx-4;
+}

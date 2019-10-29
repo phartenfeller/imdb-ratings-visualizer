@@ -5,14 +5,25 @@ import MainInfos from './charts/MainInfos';
 
 const countOccurences = ratings => {
   const ratingsArray = ratings.map(rating => rating.rating);
-  const counts = Array(10).fill(0);
 
-  for (let i = 0; i < ratingsArray.length; i++) {
-    const num = ratingsArray[i] - 1;
-    counts[num] = counts[num] ? counts[num] + 1 : 1;
-  }
+  const ratingsObject = [
+    { x: 1, y: 0 },
+    { x: 2, y: 0 },
+    { x: 3, y: 0 },
+    { x: 4, y: 0 },
+    { x: 5, y: 0 },
+    { x: 6, y: 0 },
+    { x: 7, y: 0 },
+    { x: 8, y: 0 },
+    { x: 9, y: 0 },
+    { x: 10, y: 0 },
+  ];
 
-  return counts;
+  ratingsArray.map(rating => {
+    return ratingsObject[rating - 1].y++;
+  });
+
+  return ratingsObject;
 };
 
 const Dashboard = ({ ratings }) => {
@@ -20,16 +31,15 @@ const Dashboard = ({ ratings }) => {
 
   return (
     <div className="m-10 flex">
-      <MainInfos
-        className="flex-1 w-1/2"
-        ratings={ratings}
-        ratingsCount={ratingsCount}
-      />
-      <AverageRatings
-        className="flex-1 w-1/2"
-        ratingsData={countOccurences(ratings)}
-        ratingsCount={ratingsCount}
-      />
+      <div className="flex-1 w-1/2">
+        <MainInfos ratings={ratings} ratingsCount={ratingsCount} />
+      </div>
+      <div className="flex-1 w-1/2 h-64">
+        <AverageRatings
+          ratingsData={countOccurences(ratings)}
+          ratingsCount={ratingsCount}
+        />
+      </div>
     </div>
   );
 };

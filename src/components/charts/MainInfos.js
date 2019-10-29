@@ -25,7 +25,7 @@ const MainInfos = ({ ratings, ratingsCount }) => {
   );
 
   return (
-    <div className="bg-custgrayaccent flex py-6 shadow-innercard w-1/2 rounded-lg">
+    <div className="card">
       <KeyValue description="Ratings" value={ratingsCount} />
       <KeyValue description="Days watched" value={daysWatched} />
       <KeyValue description="Your Avg" value={average} />
