@@ -7,7 +7,7 @@ const AverageRatings = ({ ratingsData, ratingsCount }) => {
   // const categories = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
 
   return (
-    <div className="card">
+    <div className="card flex">
       <svg className="invisible absolute">
         <defs>
           <linearGradient id="lgrad" x1="49%" y1="100%" x2="51%" y2="0%">
@@ -33,11 +33,12 @@ const AverageRatings = ({ ratingsData, ratingsCount }) => {
           data={ratingsData}
           style={{ data: { fill: 'url(#lgrad)' } }}
           animate={{
-            duration: 2000,
+            duration: 1000,
             onLoad: { duration: 1000 },
           }}
           cornerRadius={{ top: 3 }}
           labels={({ datum }) => datum.y}
+          height={350}
         />
       </VictoryChart>
       {/* <BarChart

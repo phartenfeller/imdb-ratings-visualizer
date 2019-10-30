@@ -27,5 +27,5 @@ html {
 }
 
 .card {
-  @apply bg-custgrayaccent flex py-6 shadow-innercard rounded-lg mx-4;
+  @apply bg-custgrayaccent py-6 shadow-innercard rounded-lg mx-4;
 }

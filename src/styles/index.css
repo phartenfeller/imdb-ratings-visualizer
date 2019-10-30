@@ -11103,7 +11103,6 @@ html {
 
 .card {
   background-color: #1f232e;
-  display: flex;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   box-shadow: inset 0px 1px 7px rgba(0, 0, 0, 0.25);

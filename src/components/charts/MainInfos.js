@@ -25,7 +25,7 @@ const MainInfos = ({ ratings, ratingsCount }) => {
   );
 
   return (
-    <div className="card">
+    <div className="card flex">
       <KeyValue description="Ratings" value={ratingsCount} />
       <KeyValue description="Days watched" value={daysWatched} />
       <KeyValue description="Your Avg" value={average} />

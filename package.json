@@ -12,7 +12,7 @@
     "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
-    "react-table": "^6.9.2",
+    "react-table": "^7.0.0-beta.12",
     "victory": "^33.1.1"
   },
   "scripts": {
