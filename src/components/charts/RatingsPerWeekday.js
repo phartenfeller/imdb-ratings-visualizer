@@ -1,16 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BarChart from './BarChart';
-
-const weekdays = [
-  'Monday',
-  'Tuesday',
-  'Wednesday',
-  'Thursday',
-  'Friday',
-  'Saturday',
-  'Sunday',
-];
+import { VictoryChart, VictoryBar, VictoryTheme, VictoryAxis } from 'victory';
 
 /**
  * Count Ratings per Weekday
@@ -18,35 +8,53 @@ const weekdays = [
  * @return {Array}
  */
 function countRatings(ratings) {
-  const counts = [0, 0, 0, 0, 0, 0, 0];
+  const ratingsObject = [
+    { x: 'Sunday', y: 0 },
+    { x: 'Monday', y: 0 },
+    { x: 'Tuesday', y: 0 },
+    { x: 'Wednesday', y: 0 },
+    { x: 'Thursday', y: 0 },
+    { x: 'Friday', y: 0 },
+    { x: 'Saturday', y: 0 },
+  ];
 
-  const weekdayRatings = ratings.reduce((prevValue, currentValue) => {
-    const weekday = currentValue.dateRated.getDay();
-    prevValue[weekday]++;
-    return prevValue;
-  }, counts);
+  ratings.map(rating => {
+    const weekday = rating.dateRated.getDay();
+    return ratingsObject[weekday].y++;
+  });
 
   // move Sunday to the end
-  weekdayRatings.push(weekdayRatings.shift());
-  return weekdayRatings;
+  ratingsObject.push(ratingsObject.shift());
+
+  return ratingsObject;
 }
 
 const RatingsPerWeekday = ({ ratings }) => {
-  const ratingsCount = ratings.length;
   const ratingsPerWeekday = countRatings(ratings);
   console.log('ratingsPerWeekday =>', ratingsPerWeekday);
 
   return (
-    <div>
-      <BarChart
-        title="Ratings per Weekday"
-        categories={weekdays}
-        data={ratingsPerWeekday}
-        dataCount={ratingsCount}
-        seriesName="Weekday"
-        width={600}
-        height={350}
-      />
+    <div className="card w-1/2">
+      <VictoryChart theme={VictoryTheme.material} height={350} width={500}>
+        <VictoryAxis
+          style={{
+            axis: { stroke: 'none' },
+            axisLabel: { fontSize: 12, padding: 30 },
+            grid: { stroke: 'none' },
+          }}
+        />
+        <VictoryBar
+          name="data"
+          data={ratingsPerWeekday}
+          // style={{ data: { fill: 'url(#lgrad)' } }}
+          animate={{
+            duration: 1000,
+            onLoad: { duration: 1000 },
+          }}
+          cornerRadius={{ top: 3 }}
+          labels={({ datum }) => datum.y}
+        />
+      </VictoryChart>
     </div>
   );
 };

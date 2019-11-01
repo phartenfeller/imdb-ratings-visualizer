@@ -4,8 +4,6 @@ import { VictoryChart, VictoryBar, VictoryTheme, VictoryAxis } from 'victory';
 // import BarChart from './BarChart';
 
 const AverageRatings = ({ ratingsData, ratingsCount }) => {
-  // const categories = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10'];
-
   return (
     <div className="card flex">
       <svg className="invisible absolute">
