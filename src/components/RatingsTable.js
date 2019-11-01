@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Table from './Table';
-import { Link } from 'react-router-dom';
 import getLinkWithIcon from '../util/getLinkWithIcon';
 
 const RatingsTable = ({ ratings }) => {
@@ -9,7 +8,7 @@ const RatingsTable = ({ ratings }) => {
     {
       Header: '',
       accessor: 'url',
-      Cell: ({ row }) => getLinkWithIcon(row.url),
+      Cell: ({ row }) => getLinkWithIcon(row.values.url),
       maxWidth: 64,
       className: 'cell-center',
     },
@@ -52,26 +51,13 @@ const RatingsTable = ({ ratings }) => {
 
   return (
     <div className="main-component" style={{ padding: 40 }}>
-      <Table
-        data={ratings}
-        columns={columns}
-        defaultSorted={defaultSorted}
-        defaultPageSize={50}
-      />
+      <Table data={ratings} columns={columns} defaultSorted={defaultSorted} />
     </div>
   );
 };
 
 RatingsTable.propTypes = {
   ratings: PropTypes.array,
-};
-
-const imdbLink = ({ url }) => {
-  return <Link to={url}>Test</Link>;
-};
-
-imdbLink.propTypes = {
-  url: PropTypes.string,
 };
 
 export default RatingsTable;

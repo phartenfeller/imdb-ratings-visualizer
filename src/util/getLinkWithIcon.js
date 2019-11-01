@@ -10,7 +10,7 @@ function getLinkWithIcon(url) {
     <a
       href={url}
       target="_blank"
-      className="material-icons imdb-link"
+      className="material-icons text-gray-700 align-middle cursor-pointer"
       rel="noreferrer noopener"
     >
       open_in_new
