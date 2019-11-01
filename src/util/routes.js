@@ -1,7 +1,7 @@
-import RatingsTable from '../components/RatingsTable';
-import Dashboard from '../components/Dashboard';
-import Time from '../components/Time';
-import Deviations from '../components/Deviations';
+import RatingsTable from '../routes/Ratings';
+import Dashboard from '../routes/Dashboard';
+import Time from '../routes/Time';
+import Deviations from '../routes/Deviations';
 
 const routes = [
   {

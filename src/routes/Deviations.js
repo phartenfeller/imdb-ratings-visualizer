@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import Table from './Table';
+import Table from '../components/Table';
 import getLinkWithIcon from '../util/getLinkWithIcon';
 import getSpanWithTooltip from '../util/getSpanWithTooltip';
 

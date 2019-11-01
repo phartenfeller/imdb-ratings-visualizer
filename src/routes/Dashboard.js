@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AverageRatings from './charts/AverageRatings';
-import MainInfos from './charts/MainInfos';
+import AverageRatings from '../components/charts/AverageRatings';
+import MainInfos from '../components/charts/MainInfos';
 
 const countOccurences = ratings => {
   const ratingsArray = ratings.map(rating => rating.rating);

@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import RatingsPerWeekday from './charts/RatingsPerWeekday';
-import RatingsPerYear from './charts/RatingsPerYear';
-import RatingssPerDecade from './charts/RatingsPerDecade';
+import RatingsPerWeekday from '../components/charts/RatingsPerWeekday';
+import RatingsPerYear from '../components/charts/RatingsPerYear';
+import RatingssPerDecade from '../components/charts/RatingsPerDecade';
 
 const Time = ({ ratings }) => {
   return (
