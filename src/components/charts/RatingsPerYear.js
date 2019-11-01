@@ -1,48 +1,48 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import BarChart from './BarChart';
+import { VictoryChart, VictoryBar, VictoryTheme, VictoryAxis } from 'victory';
 
-const countOccurences = (ratings, years) => {
-  const ratingsArray = ratings.map(rating => rating.dateRated.getFullYear());
-  const counts = Array(years).fill(0);
+const getRatingsPerYear = ratings => {
+  const ratingsArray = ratings
+    .map(rating => rating.dateRated.getFullYear())
+    .sort();
 
-  for (let i = 0; i < ratingsArray.length; i++) {
-    const year = ratingsArray[i];
-    const index = years.indexOf(year);
-    counts[index] = counts[index] ? counts[index] + 1 : 1;
-  }
+  const yearCount = ratingsArray.reduce((prev, curr) => {
+    const index = prev.findIndex(entries => entries.x === curr);
+    index !== -1 ? prev[index].y++ : prev.push({ x: curr, y: 1 });
+    return prev;
+  }, []);
 
-  return counts;
+  return yearCount;
 };
 
-/**
- * Returns years in which the user rated
- * @param {Array} ratings
- * @return {Array}
- */
-function uniqueYears(ratings) {
-  const unique = [
-    ...new Set(ratings.map(rating => rating.dateRated.getFullYear())),
-  ];
-  unique.sort();
-  return unique;
-}
-
 const RatingsPerYear = ({ ratings }) => {
-  const ratingsCount = ratings.length;
-  const ratedYears = uniqueYears(ratings);
-  const yearsData = countOccurences(ratings, ratedYears);
+  const yearsData = getRatingsPerYear(ratings);
 
   return (
-    <BarChart
-      title="Ratings per Year"
-      categories={ratedYears}
-      data={yearsData}
-      dataCount={ratingsCount}
-      seriesName="Year"
-      width={600}
-      height={350}
-    />
+    <div className="card w-1/2">
+      <VictoryChart theme={VictoryTheme.material} height={350} width={500}>
+        <VictoryAxis
+          tickFormat={t => `${t}`}
+          style={{
+            axis: { stroke: 'none' },
+            axisLabel: { fontSize: 12, padding: 30 },
+            grid: { stroke: 'none' },
+          }}
+        />
+        <VictoryBar
+          name="data"
+          data={yearsData}
+          // style={{ data: { fill: 'url(#lgrad)' } }}
+          animate={{
+            duration: 1000,
+            onLoad: { duration: 1000 },
+          }}
+          cornerRadius={{ top: 3 }}
+          labels={({ datum }) => datum.y}
+        />
+      </VictoryChart>
+    </div>
   );
 };
 
