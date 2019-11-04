@@ -91,11 +91,13 @@ const RatingsPerDecade = ({ ratings }) => {
             axisLabel: { fontSize: 12, padding: 30 },
             grid: { stroke: 'none' },
           }}
+          tickCount={data[0].length}
         />
         <VictoryAxis
-          name="1"
+          name="ratings axis"
           orientation="right"
           dependentAxis
+          tickCount={10}
           // offsetX={xOffsets[i]}
           style={{
             axis: { stroke: 'none' },
@@ -108,7 +110,8 @@ const RatingsPerDecade = ({ ratings }) => {
           tickFormat={t => `${Math.round(t * maxima[0])}`}
         />
         <VictoryAxis
-          name="2"
+          name="avgRating axis"
+          tickCount={10}
           dependentAxis
           // offsetX={xOffsets[i]}
           style={{
