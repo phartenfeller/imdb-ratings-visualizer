@@ -1,6 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { VictoryChart, VictoryLine, VictoryTheme, VictoryAxis } from 'victory';
+import {
+  VictoryChart,
+  VictoryLine,
+  VictoryTheme,
+  VictoryAxis,
+  VictoryVoronoiContainer,
+  VictoryTooltip,
+} from 'victory';
 
 /**
  * Convert a year to it's decade
@@ -61,33 +68,73 @@ const RatingsPerDecade = ({ ratings }) => {
 
   return (
     <div className="card w-1/2">
-      <VictoryChart theme={VictoryTheme.material} height={350} width={500}>
-        <VictoryAxis />
-        {data.map((d, i) => (
-          <VictoryAxis
-            dependentAxis
-            key={i}
-            // offsetX={xOffsets[i]}
-            style={{
-              axis: { stroke: colors[i] },
-              // ticks: { padding: tickPadding[i] },
-              // tickLabels: { fill: colors[i], textAnchor: anchors[i] },
+      <VictoryChart
+        theme={VictoryTheme.material}
+        height={350}
+        width={500}
+        containerComponent={
+          <VictoryVoronoiContainer
+            voronoiDimension="x"
+            labels={({ datum }) => {
+              return datum.childName === 'ratings'
+                ? `Ratings: ${datum.y}`
+                : `Avg Rating: ${datum.y}`;
             }}
-            // Use normalized tickValues (0 - 1)
-            // tickValues={[0.25, 0.5, 0.75, 1]}
-            // Re-scale ticks by multiplying by correct maxima
-            tickFormat={t => `${t}`}
+            labelComponent={<VictoryTooltip constrainToVisibleArea />}
           />
-        ))}
-        {data.map((d, i) => (
-          <VictoryLine
-            key={i}
-            data={d}
-            style={{ data: { stroke: colors[i] } }}
-            // normalize data
-            y={datum => datum.y / maxima[i]}
-          />
-        ))}
+        }
+      >
+        <VictoryAxis
+          tickFormat={t => `${t}`}
+          style={{
+            axis: { stroke: 'none' },
+            axisLabel: { fontSize: 12, padding: 30 },
+            grid: { stroke: 'none' },
+          }}
+        />
+        <VictoryAxis
+          name="1"
+          orientation="right"
+          dependentAxis
+          // offsetX={xOffsets[i]}
+          style={{
+            axis: { stroke: 'none' },
+            axisLabel: { fontSize: 12, padding: 30 },
+            grid: { stroke: 'none' },
+          }}
+          // Use normalized tickValues (0 - 1)
+          // tickValues={[0.25, 0.5, 0.75, 1]}
+          // Re-scale ticks by multiplying by correct maxima
+          tickFormat={t => `${Math.round(t * maxima[0])}`}
+        />
+        <VictoryAxis
+          name="2"
+          dependentAxis
+          // offsetX={xOffsets[i]}
+          style={{
+            axis: { stroke: 'none' },
+            axisLabel: { fontSize: 12, padding: 30 },
+            grid: { stroke: 'none' },
+          }}
+          // Use normalized tickValues (0 - 1)
+          // tickValues={[0.25, 0.5, 0.75, 1]}
+          // Re-scale ticks by multiplying by correct maxima
+          tickFormat={t => `${Math.round(t * maxima[1])}`}
+        />
+        <VictoryLine
+          name="ratings"
+          data={data[0]}
+          style={{ data: { stroke: colors[0] } }}
+          // normalize data
+          y={datum => datum.y / maxima[0]}
+        />
+        <VictoryLine
+          name="avgRating"
+          data={data[1]}
+          style={{ data: { stroke: colors[1] } }}
+          // normalize data
+          y={datum => datum.y / maxima[1]}
+        />
       </VictoryChart>
     </div>
   );
