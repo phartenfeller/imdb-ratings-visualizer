@@ -68,11 +68,10 @@ const LoadedApp = ({ ratings, loadedMediaTypes }) => {
   return (
     <div className="flex">
       <Sidebar
-        className="flex-1"
         loadedMediaTypes={loadedMediaTypes}
         filterMovies={filterMovies}
       />
-      <div className="flex-1">{routeComponents}</div>
+      <div className="ml-64 w-full">{routeComponents}</div>
       {/* <RatingsTable ratings={ratings} /> */}
     </div>
   );

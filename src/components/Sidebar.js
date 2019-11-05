@@ -40,7 +40,7 @@ const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
   };
 
   return (
-    <div className="w-14 h-screen bg-custgraybright shadow-inner">
+    <div className="fixed w-64 h-screen bg-custgraybright shadow-inner top-0 left-0 bottom-0">
       <h1 className="text-purple-300 font-semibold text-2xl text-center text-shadow my-4">
         Movies Rating Visualizer
       </h1>
