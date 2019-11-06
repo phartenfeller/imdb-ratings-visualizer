@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import routes from '../util/routes';
 import mediaTypes from '../constants/mediaTypes';
+import routes from '../util/routes';
 
 /**
  * returns active route name
@@ -80,27 +80,22 @@ const SidebarElements = () => {
     <div>
       {routes.map(route => {
         return (
-          <Link to={route.path} className="sidebar-link mb-6" key={route.name}>
-            <div className={isActive(route.name) ? 'active-tab' : ''}>
-              <div
-                onClick={() => setActive(route.name)}
-                className="sidebar-box"
+          <Link to={route.path} key={route.name}>
+            <div onClick={() => setActive(route.name)} className="mb-2">
+              <i
+                className={`material-icons text-2xl align-middle pl-3 ${
+                  isActive(route.name) ? 'text-purple-200' : 'text-gray-700'
+                }`}
               >
-                <i
-                  className={`material-icons text-2xl align-middle pl-3 ${
-                    isActive(route.name) ? 'text-purple-200' : 'text-gray-700'
-                  }`}
-                >
-                  {route.icon}
-                </i>
-                <span
-                  className={`text-2xl align-middle pl-3 ${
-                    isActive(route.name) ? 'text-gray-400' : 'text-gray-500'
-                  }`}
-                >
-                  {route.name}
-                </span>
-              </div>
+                {route.icon}
+              </i>
+              <span
+                className={`text-2xl align-middle pl-3 ${
+                  isActive(route.name) ? 'text-gray-400' : 'text-gray-500'
+                }`}
+              >
+                {route.name}
+              </span>
             </div>
           </Link>
         );

@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { VictoryChart, VictoryBar, VictoryTheme, VictoryAxis } from 'victory';
+import React from 'react';
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from 'victory';
 // import BarChart from './BarChart';
 
 const AverageRatings = ({ ratingsData, ratingsCount }) => {
@@ -35,7 +35,7 @@ const AverageRatings = ({ ratingsData, ratingsCount }) => {
             onLoad: { duration: 1000 },
           }}
           cornerRadius={{ top: 3 }}
-          labels={({ datum }) => datum.y}
+          labels={({ datum }) => Math.round(datum.y, 1)}
           height={350}
         />
       </VictoryChart>
