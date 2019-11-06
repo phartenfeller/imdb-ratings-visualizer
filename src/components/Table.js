@@ -1,6 +1,6 @@
-import React from 'react';
 import PropTypes from 'prop-types';
-import { useTable, usePagination, useSortBy } from 'react-table';
+import React from 'react';
+import { usePagination, useSortBy, useTable } from 'react-table';
 
 const disabledClasses = isDisabled => {
   return isDisabled ? 'text-gray-700' : '';
@@ -36,7 +36,7 @@ const Table = ({ data, columns, defaultSorted }) => {
   );
 
   return (
-    <div className="w-full card">
+    <div className="card">
       <div className="mx-8">
         <table {...getTableProps()} className="w-full">
           <thead>

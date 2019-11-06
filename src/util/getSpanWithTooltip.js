@@ -7,15 +7,8 @@ import React from 'react';
  */
 function getSpanWithTooltip(text) {
   return (
-    <div
-      style={{
-        textOverflow: 'ellipsis',
-        whiteSpace: 'nowrap',
-        overflow: 'hidden',
-        cursor: 'text',
-      }}
-    >
-      <span title={text}>{text}</span>
+    <div title={text} className="truncate">
+      {text}
     </div>
   );
 }
