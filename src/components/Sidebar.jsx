@@ -1,37 +1,32 @@
-import PropTypes from 'prop-types';
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import mediaTypes from '../constants/mediaTypes';
-import routes from '../util/routes';
+import PropTypes from "prop-types";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import mediaTypes from "../constants/mediaTypes";
+import routes from "../util/routes";
 
-/**
- * returns active route name
- * @param {Array} routes
- * @return {String}
- */
-const getActiveRoute = routes => {
+const getActiveRoute = (routes) => {
   console.log(routes);
 
-  const currentRoute = routes.find(route => {
+  const currentRoute = routes.find((route) => {
     const lastPath = window.location.href.substr(
-      window.location.href.lastIndexOf('/')
+      window.location.href.lastIndexOf("/")
     );
 
     return route.path === lastPath;
   });
 
-  console.log('currentRoute =>', currentRoute);
+  console.log("currentRoute =>", currentRoute);
   return currentRoute.name;
 };
 
 const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
-  const precheckBoxes = loadedMediaTypes.map(typeId => {
+  const precheckBoxes = loadedMediaTypes.map((typeId) => {
     return [typeId, true];
   });
   const [forceUpdate, setForceUpdate] = useState(1);
   const [checkedItems, setCheckedItems] = useState(new Map(precheckBoxes));
 
-  const handleCheckboxChange = event => {
+  const handleCheckboxChange = (event) => {
     const id = parseInt(event.target.value);
     const isChecked = event.target.checked;
     setCheckedItems(checkedItems.set(id, isChecked));
@@ -47,7 +42,7 @@ const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
       <SidebarElements />
       <div className="mt-10">
         {checkedItems
-          ? loadedMediaTypes.map(typeId => {
+          ? loadedMediaTypes.map((typeId) => {
               return (
                 <Checkbox
                   key={typeId}
@@ -58,7 +53,7 @@ const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
                 />
               );
             })
-          : 'loading'}
+          : "loading"}
       </div>
     </div>
   );
@@ -66,32 +61,32 @@ const Sidebar = ({ loadedMediaTypes, filterMovies }) => {
 
 Sidebar.propTypes = {
   loadedMediaTypes: PropTypes.array,
-  filterMovies: PropTypes.func,
+  filterMovies: PropTypes.func.isRequired,
 };
 
 const SidebarElements = () => {
   const [active, setActive] = useState(getActiveRoute(routes));
 
-  const isActive = name => {
+  const isActive = (name) => {
     return active === name;
   };
 
   return routes ? (
     <div>
-      {routes.map(route => {
+      {routes.map((route) => {
         return (
           <Link to={route.path} key={route.name}>
             <div onClick={() => setActive(route.name)} className="mb-2">
               <i
                 className={`material-icons text-2xl align-middle pl-3 ${
-                  isActive(route.name) ? 'text-purple-200' : 'text-gray-700'
+                  isActive(route.name) ? "text-purple-200" : "text-gray-700"
                 }`}
               >
                 {route.icon}
               </i>
               <span
                 className={`text-2xl align-middle pl-3 ${
-                  isActive(route.name) ? 'text-gray-400' : 'text-gray-500'
+                  isActive(route.name) ? "text-gray-400" : "text-gray-500"
                 }`}
               >
                 {route.name}
@@ -102,7 +97,7 @@ const SidebarElements = () => {
       })}
     </div>
   ) : (
-    'Loading'
+    "Loading"
   );
 };
 
@@ -124,10 +119,10 @@ const Checkbox = ({ id, name, checked, onChange }) => {
 };
 
 Checkbox.propTypes = {
-  id: PropTypes.number,
-  name: PropTypes.string,
-  checked: PropTypes.bool,
-  onChange: PropTypes.func,
+  id: PropTypes.number.isRequired,
+  name: PropTypes.string.isRequired,
+  checked: PropTypes.bool.isRequired,
+  onChange: PropTypes.func.isRequired,
 };
 
 export default Sidebar;

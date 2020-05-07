@@ -1,6 +1,6 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from 'victory';
+import PropTypes from "prop-types";
+import React from "react";
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory";
 // import BarChart from './BarChart';
 
 const AverageRatings = ({ ratingsData, ratingsCount }) => {
@@ -20,16 +20,16 @@ const AverageRatings = ({ ratingsData, ratingsCount }) => {
           // they are placed on the axis
           tickValues={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
           style={{
-            axis: { stroke: 'none' },
+            axis: { stroke: "none" },
             axisLabel: { fontSize: 12, padding: 30 },
-            grid: { stroke: 'none' },
+            grid: { stroke: "none" },
           }}
           label="Stars"
         />
         <VictoryBar
           name="data"
           data={ratingsData}
-          style={{ data: { fill: 'url(#lgrad)' } }}
+          style={{ data: { fill: "url(#lgrad)" } }}
           animate={{
             duration: 1000,
             onLoad: { duration: 1000 },

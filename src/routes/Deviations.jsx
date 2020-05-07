@@ -1,20 +1,21 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import Table from '../components/Table';
-import getLinkWithIcon from '../util/getLinkWithIcon';
-import getSpanWithTooltip from '../util/getSpanWithTooltip';
+import PropTypes from "prop-types";
+import React from "react";
+import Table from "../components/Table";
+import ratingsShape from "../types/ratingsShape";
+import getLinkWithIcon from "../util/getLinkWithIcon";
+import getSpanWithTooltip from "../util/getSpanWithTooltip";
 
 /**
  * Splits deviations to negatives and positives and sorts them
  * @param {Array} ratings
  * @return {Array} positives and negatives
  */
-const splitAndSort = ratings => {
-  const positives = ratings.filter(rating => {
+const splitAndSort = (ratings) => {
+  const positives = ratings.filter((rating) => {
     return rating.deviation > 0;
   });
 
-  const negatives = ratings.filter(rating => {
+  const negatives = ratings.filter((rating) => {
     return rating.deviation < 0;
   });
 
@@ -26,53 +27,53 @@ const splitAndSort = ratings => {
 };
 
 const getTableCell = ({ value, alignment }) => {
-  const alignmentClass = alignment ? `text-${alignment}` : '';
+  const alignmentClass = alignment ? `text-${alignment}` : "";
   return <div className={alignmentClass}>{value}</div>;
 };
 
 getTableCell.propTypes = {
-  value: PropTypes.string,
-  alignment: PropTypes.oneOf(['left', 'right', 'center']),
+  value: PropTypes.string.isRequired,
+  alignment: PropTypes.oneOf(["left", "right", "center"]).isRequired,
 };
 
 const Deviation = ({ ratings }) => {
   const [positives, negatives] = splitAndSort(ratings);
-  console.log('positives =>', positives);
-  console.log('negatives =>', negatives);
+  console.log("positives =>", positives);
+  console.log("negatives =>", negatives);
 
   const columns = [
     {
-      Header: '',
-      accessor: 'url',
+      Header: "",
+      accessor: "url",
       Cell: ({ row }) => getLinkWithIcon(row.values.url),
       maxWidth: 64,
     },
     {
-      Header: 'Title',
-      accessor: 'title',
+      Header: "Title",
+      accessor: "title",
       maxWidth: 400,
       Cell: ({ row }) => getSpanWithTooltip(row.values.title),
     },
     {
-      Header: 'Rating',
-      accessor: 'rating',
+      Header: "Rating",
+      accessor: "rating",
       maxWidth: 100,
       Cell: ({ row }) =>
-        getTableCell({ value: row.values.rating, alignment: 'center' }),
+        getTableCell({ value: row.values.rating, alignment: "center" }),
     },
     {
-      Header: 'IMDb',
-      accessor: 'imdbRating',
+      Header: "IMDb",
+      accessor: "imdbRating",
       maxWidth: 100,
       Cell: ({ row }) =>
-        getTableCell({ value: row.values.imdbRating, alignment: 'center' }),
+        getTableCell({ value: row.values.imdbRating, alignment: "center" }),
     },
     {
-      Header: 'Deviation',
-      accessor: 'deviation',
+      Header: "Deviation",
+      accessor: "deviation",
       maxWidth: 100,
       Cell: ({ row }) =>
-        getTableCell({ value: row.values.deviation, alignment: 'center' }),
+        getTableCell({ value: row.values.deviation, alignment: "center" }),
     },
   ];
 
@@ -93,7 +94,7 @@ const Deviation = ({ ratings }) => {
 };
 
 Deviation.propTypes = {
-  ratings: PropTypes.array,
+  ratings: PropTypes.arrayOf(ratingsShape).isRequired,
 };
 
 export default Deviation;

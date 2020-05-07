@@ -1,19 +1,19 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { uploadFile } from '../util/fileUpload';
-import getUniqueMediaTypes from '../util/getUniqueMediaTypes';
+import PropTypes from "prop-types";
+import React from "react";
+import { uploadFile } from "../util/fileUpload";
+import getUniqueMediaTypes from "../util/getUniqueMediaTypes";
 
 const Uploader = ({ setLoaded, setRatings, setLoadedMediaTypes }) => {
   const upload = async () => {
-    const file = document.getElementById('fileUpload').files[0];
+    const file = document.getElementById("fileUpload").files[0];
     const json = await uploadFile(file);
     const mediaTypes = getUniqueMediaTypes(json);
     console.log(mediaTypes);
     setRatings(json);
     setLoadedMediaTypes(mediaTypes);
     setLoaded(true);
-    sessionStorage.setItem('ratings', JSON.stringify(json));
-    sessionStorage.setItem('mediaTypes', mediaTypes);
+    sessionStorage.setItem("ratings", JSON.stringify(json));
+    sessionStorage.setItem("mediaTypes", mediaTypes);
   };
 
   return (

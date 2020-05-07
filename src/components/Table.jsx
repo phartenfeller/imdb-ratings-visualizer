@@ -1,9 +1,11 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { usePagination, useSortBy, useTable } from 'react-table';
+import PropTypes from "prop-types";
+import React from "react";
+import { usePagination, useSortBy, useTable } from "react-table";
 
-const disabledClasses = isDisabled => {
-  return isDisabled ? 'text-gray-700' : '';
+/* eslint-disable react/jsx-props-no-spreading */
+
+const disabledClasses = (isDisabled) => {
+  return isDisabled ? "text-gray-700" : "";
 };
 
 const Table = ({ data, columns, defaultSorted }) => {
@@ -40,16 +42,16 @@ const Table = ({ data, columns, defaultSorted }) => {
       <div className="mx-8">
         <table {...getTableProps()} className="w-full">
           <thead>
-            {headerGroups.map(headerGroup => (
+            {headerGroups.map((headerGroup) => (
               <tr key={headerGroup.id} {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map(column => (
+                {headerGroup.headers.map((column) => (
                   <th
                     className="align-middle"
                     key={column.id}
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                   >
                     <span className="font-normal text-lg text-purple-300 uppercase">
-                      {column.render('Header')}{' '}
+                      {column.render("Header")}{" "}
                     </span>
                     <span>
                       {column.isSorted ? (
@@ -63,7 +65,7 @@ const Table = ({ data, columns, defaultSorted }) => {
                           </i>
                         )
                       ) : (
-                        ''
+                        ""
                       )}
                     </span>
                   </th>
@@ -73,20 +75,20 @@ const Table = ({ data, columns, defaultSorted }) => {
           </thead>
           <tbody {...getTableBodyProps()}>
             {page.map(
-              (row, i) =>
+              (row) =>
                 prepareRow(row) || (
                   <tr
                     {...row.getRowProps()}
                     className="border-t border-solid border-gray-800 text-gray-500"
                   >
-                    {row.cells.map(cell => {
+                    {row.cells.map((cell) => {
                       return (
                         <td
                           key={cell.id}
                           {...cell.getCellProps()}
                           className="py-3"
                         >
-                          {cell.render('Cell')}
+                          {cell.render("Cell")}
                         </td>
                       );
                     })}
@@ -98,19 +100,21 @@ const Table = ({ data, columns, defaultSorted }) => {
       </div>
       <div className="pagination mt-6">
         <button
-          className={'ml-6 px-2 py-1 ' + disabledClasses(!canPreviousPage)}
+          className={`ml-6 px-2 py-1 ${disabledClasses(!canPreviousPage)}`}
           onClick={() => gotoPage(0)}
           disabled={!canPreviousPage}
+          type="button"
         >
-          <i className="material-icons align-middle" style={{ width: '8px' }}>
+          <i className="material-icons align-middle" style={{ width: "8px" }}>
             keyboard_arrow_left
           </i>
           <i className="material-icons align-middle">keyboard_arrow_left</i>
         </button>
         <button
-          className={'px-2 py-1 ' + disabledClasses(!canPreviousPage)}
+          className={`px-2 py-1 ${disabledClasses(!canPreviousPage)}`}
           onClick={() => previousPage()}
           disabled={!canPreviousPage}
+          type="button"
         >
           <i className="material-icons align-middle">keyboard_arrow_left</i>
         </button>
@@ -121,7 +125,7 @@ const Table = ({ data, columns, defaultSorted }) => {
             type="number"
             defaultValue={pageIndex + 1}
             value={pageIndex + 1}
-            onChange={e => {
+            onChange={(e) => {
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               gotoPage(page);
             }}
@@ -131,9 +135,10 @@ const Table = ({ data, columns, defaultSorted }) => {
           of {pageOptions.length}
         </span>
         <button
-          className={'px-2 py-1 ' + disabledClasses(!canNextPage)}
+          className={`px-2 py-1 ${disabledClasses(!canNextPage)}`}
           onClick={() => nextPage()}
           disabled={!canNextPage}
+          type="button"
         >
           <i className="material-icons align-middle">keyboard_arrow_right</i>
         </button>
@@ -141,8 +146,9 @@ const Table = ({ data, columns, defaultSorted }) => {
           className="px-2 py-1"
           onClick={() => gotoPage(pageCount - 1)}
           disabled={!canNextPage}
+          type="button"
         >
-          <i className="material-icons align-middle" style={{ width: '8px' }}>
+          <i className="material-icons align-middle" style={{ width: "8px" }}>
             keyboard_arrow_right
           </i>
           <i className="material-icons align-middle">keyboard_arrow_right</i>
@@ -150,13 +156,13 @@ const Table = ({ data, columns, defaultSorted }) => {
         <select
           className="form-select bg-gray-800 border-2 border-gray-800 py-1 float-right mr-6"
           value={pageSize}
-          onChange={e => {
+          onChange={(e) => {
             setPageSize(Number(e.target.value));
           }}
         >
-          {[10, 20, 30, 40, 50].map(pageSize => (
-            <option key={pageSize} value={pageSize}>
-              Show {pageSize}
+          {[10, 20, 30, 40, 50].map((pSize) => (
+            <option key={pSize} value={pSize}>
+              Show {pSize}
             </option>
           ))}
         </select>

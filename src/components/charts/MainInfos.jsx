@@ -1,5 +1,6 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes from "prop-types";
+import React from "react";
+import ratingsShape from "../../types/ratingsShape";
 
 /**
  * Get average, public average and days watched
@@ -35,8 +36,8 @@ const MainInfos = ({ ratings, ratingsCount }) => {
 };
 
 MainInfos.propTypes = {
-  ratings: PropTypes.array,
-  ratingsCount: PropTypes.number,
+  ratings: PropTypes.arrayOf(ratingsShape).isRequired,
+  ratingsCount: PropTypes.number.isRequired,
 };
 
 const KeyValue = ({ description, value }) => {
@@ -49,8 +50,8 @@ const KeyValue = ({ description, value }) => {
 };
 
 KeyValue.propTypes = {
-  description: PropTypes.string,
-  value: PropTypes.number,
+  description: PropTypes.string.isRequired,
+  value: PropTypes.number.isRequired,
 };
 
 export default MainInfos;

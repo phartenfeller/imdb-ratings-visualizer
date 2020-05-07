@@ -1,15 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { VictoryChart, VictoryBar, VictoryTheme, VictoryAxis } from 'victory';
+import PropTypes from "prop-types";
+import React from "react";
+import { VictoryAxis, VictoryBar, VictoryChart, VictoryTheme } from "victory";
+import ratingsShape from "../../types/ratingsShape";
 
-const getRatingsPerYear = ratings => {
+const getRatingsPerYear = (ratings) => {
   const ratingsArray = ratings
-    .map(rating => rating.dateRated.getFullYear())
+    .map((rating) => rating.dateRated.getFullYear())
     .sort();
 
   const yearCount = ratingsArray.reduce((prev, curr) => {
-    const index = prev.findIndex(entries => entries.x === curr);
-    index !== -1 ? prev[index].y++ : prev.push({ x: curr, y: 1 });
+    const index = prev.findIndex((entries) => entries.x === curr);
+    index !== -1 ? (prev[index].y += 1) : prev.push({ x: curr, y: 1 });
     return prev;
   }, []);
 
@@ -23,11 +24,11 @@ const RatingsPerYear = ({ ratings }) => {
     <div className="card w-1/2">
       <VictoryChart theme={VictoryTheme.material} height={350} width={500}>
         <VictoryAxis
-          tickFormat={t => `${t}`}
+          tickFormat={(t) => `${t}`}
           style={{
-            axis: { stroke: 'none' },
+            axis: { stroke: "none" },
             axisLabel: { fontSize: 12, padding: 30 },
-            grid: { stroke: 'none' },
+            grid: { stroke: "none" },
           }}
         />
         <VictoryBar
@@ -47,7 +48,7 @@ const RatingsPerYear = ({ ratings }) => {
 };
 
 RatingsPerYear.propTypes = {
-  ratings: PropTypes.array,
+  ratings: PropTypes.arrayOf(ratingsShape).isRequired,
 };
 
 export default RatingsPerYear;
