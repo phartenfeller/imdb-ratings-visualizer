@@ -1,63 +1,23 @@
 {
-  "extends": [
-    "plugin:react/recommended",
-    "google",
-    "prettier"
-  ],
+  "extends": ["plugin:react/recommended", "airbnb", "prettier"],
   "parserOptions": {
-    "ecmaVersion": 2017,
+    "ecmaVersion": 11,
     "sourceType": "module"
   },
   "env": {
-    "es6": true
+    "es6": true,
+    "browser": true
   },
   "rules": {
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "require-jsdoc": [
-      "error",
-      {
-        "require": {
-          "FunctionDeclaration": true,
-          "MethodDefinition": true,
-          "ClassDeclaration": false,
-          "ArrowFunctionExpression": false,
-          "FunctionExpression": false
-        }
-      }
-    ],
-    "arrow-parens": 0,
-    "linebreak-style": 0,
-    "no-invalid-this": 0,
-    "max-statements": [
-      2,
-      16
-    ],
-    "max-depth": [
-      2,
-      5
-    ],
-    "complexity": [
-      2,
-      8
-    ],
-    "max-params": [
-      2,
-      4
-    ],
-    "prettier/prettier": [
-      "error",
-      {
-        "singleQuote": true,
-        "tabWidth": 2,
-        "trailingComma": "es5"
-      }
-    ]
+    "import/no-extraneous-dependencies": 0,
+    "global-require": 0,
+    "import/prefer-default-export": 0,
+    "react/jsx-one-expression-per-line": 0,
+    "radix": 0
   },
-  "plugins": [
-    "prettier",
-    "react-hooks"
-  ],
+  "plugins": ["prettier", "react-hooks"],
   "settings": {
     "react": {
       "pragma": "React",
